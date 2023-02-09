@@ -7,3 +7,18 @@
 /* PrimeFlex */
 @import "../node_modules/primeflex/primeflex.scss";
 
+/* PrimeNG themes */
+@import "assets/themes/arya-blue/theme.css";
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: center;
+}
