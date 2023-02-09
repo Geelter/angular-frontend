@@ -14,3 +14,19 @@ export const signupStart = createAction(
     isTermsOfUseAccepted: boolean;
   }>()
 );
+
+export const authenticateSuccess = createAction(
+  '[Auth] Authenticate Success',
+  props<{
+    token: string;
+  }>()
+);
+
+export const authenticateError = createAction(
+  '[Auth] Authenticate Error',
+  props<{
+    error: string;
+  }>()
+);
+
+export const autoLogin = createAction('[Auth] Auto Login');

@@ -22,5 +22,15 @@ export const authReducer = createReducer(
     ...state,
     token: '',
     authError: '',
+  })),
+  on(AuthActions.authenticateSuccess, (state, authSuccess) => ({
+    ...state,
+    token: authSuccess.token,
+    authError: '',
+  })),
+  on(AuthActions.authenticateError, (state, authError) => ({
+    ...state,
+    token: '',
+    authError: authError.error,
   }))
 );
