@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "assets/layout/styles/layout/layout.scss";
 
 /* PrimeNG */
 @import "../node_modules/primeicons/primeicons.css";
@@ -8,3 +7,17 @@
 /* PrimeFlex */
 @import "../node_modules/primeflex/primeflex.scss";
 
+/* PrimeNG themes */
+@import "assets/themes/arya-blue/theme.css";
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  column-gap: 10px;
+  grid-template-areas:
+    "header header header"
+    "character content players"
+    "footer footer footer";
+  height: 100vh;
+}
