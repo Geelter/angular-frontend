@@ -21,3 +21,27 @@
     "footer footer footer";
   height: 100vh;
 }
+
+app-header {
+  grid-area: header;
+}
+
+.player-character {
+  grid-area: character;
+  background-color: green;
+}
+
+.content {
+  grid-area: content;
+  background-color: brown;
+}
+
+.active-players {
+  grid-area: players;
+  background-color: blue;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: orangered;
+}
