@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* PrimeNG */
 @import "../node_modules/primeicons/primeicons.css";
@@ -10,15 +15,38 @@
 /* PrimeNG themes */
 @import "assets/themes/arya-blue/theme.css";
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.grid-container {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  column-gap: 10px;
+  grid-template-areas:
+    "header header header"
+    "character content players"
+    "footer footer footer";
+  height: 100vh;
 }
 
-.centered-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: center;
+app-header {
+  grid-area: header;
+}
+
+.player-character {
+  grid-area: character;
+  background-color: green;
+}
+
+.content {
+  grid-area: content;
+  background-color: brown;
+}
+
+.active-players {
+  grid-area: players;
+  background-color: blue;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: orangered;
 }
