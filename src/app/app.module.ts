@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducer } from './store/app.reducer';
+import { AuthEffects } from './auth/store/auth.effects';
 
 import { MenubarModule } from 'primeng/menubar';
 import { TabViewModule } from 'primeng/tabview';
@@ -22,8 +24,7 @@ import { BannerComponent } from './header/banner/banner.component';
 import { HeaderComponent } from './header/header.component';
 import { SigninFormComponent } from './auth/signin-form/signin-form.component';
 import { SignupFormComponent } from './auth/signup-form/signup-form.component';
-import { appReducer } from './store/app.reducer';
-import { AuthEffects } from './auth/store/auth.effects';
+import { CharacterSidebarComponent } from './sidebars/character-sidebar/character-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     BannerComponent,
     SigninFormComponent,
     SignupFormComponent,
+    CharacterSidebarComponent,
   ],
   imports: [
     BrowserModule,
