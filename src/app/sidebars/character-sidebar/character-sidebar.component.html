@@ -1,35 +1,51 @@
-<div>
+<div class="container">
   <img
     src="{{dummyCharacterData.avatar}}"
     alt="character avatar"
+    height="140"
+    width="111"
+    class="character-avatar"
   >
 
-  <p>{{dummyCharacterData.name}} (ID: {{dummyCharacterData.id}})</p>
+  <div class="character-section">
+    <p>{{dummyCharacterData.name}}</p>
+    <p>(ID: {{dummyCharacterData.id}})</p>
+  </div>
 
-  <div>
+  <div class="character-section">
     <p>Poziom:</p>
     <p>{{dummyCharacterData.level}}</p>
   </div>
 
-  <div>
+  <div class="character-section">
     <p>Energia:</p>
     <p>{{dummyCharacterData.currentEnergy}}/{{dummyCharacterData.maxEnergy}}</p>
   </div>
 
-  <div>
+  <div class="character-section">
     <p>Złoto:</p>
     <p>{{dummyCharacterData.money}}</p>
   </div>
 
-  <div>
+  <div class="character-section">
     <p>Doświadczenie:</p>
     <p>{{dummyCharacterData.currentExperience}}/{{dummyCharacterData.experienceToNextLevel}}</p>
-    <p-progressBar [value]="experiencePercentage"></p-progressBar>
   </div>
+  <p-progressBar
+    [style]="{'height': '8px'}"
+    [color]="'#FF4500FF'"
+    [showValue]="false"
+    [value]="experiencePercentage"
+  ></p-progressBar>
 
-  <div>
+  <div class="character-section">
     <p>Zdrowie:</p>
     <p>{{dummyCharacterData.currentHealthPoints}}/{{dummyCharacterData.maxHealthPoints}}</p>
-    <p-progressBar [value]="healthPercentage"></p-progressBar>
   </div>
+  <p-progressBar
+    [style]="{'height': '8px'}"
+    [color]="'#FF4500FF'"
+    [showValue]="false"
+    [value]="healthPercentage"
+  ></p-progressBar>
 </div>
