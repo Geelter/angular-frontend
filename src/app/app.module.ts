@@ -16,6 +16,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,6 +52,7 @@ import { CharacterSidebarComponent } from './sidebars/character-sidebar/characte
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    ProgressBarModule,
   ],
   providers: [],
   exports: [MenubarComponent],

@@ -1,16 +1,16 @@
 export interface CharacterDataModel {
-  id: number;
-  name: string;
-  avatar: string;
-  level: number;
-  currentEnergy: number;
-  maxEnergy: number;
-  energyRegeneration: number;
-  money: number;
-  currentHealthPoints: number;
-  maxHealthPoints: number;
-  currentExperience: number;
-  experienceToNextLevel: number;
+  readonly id: number;
+  readonly name: string;
+  readonly avatar: string;
+  readonly level: number;
+  readonly currentEnergy: number;
+  readonly maxEnergy: number;
+  readonly energyRegeneration: number;
+  readonly money: number;
+  readonly currentHealthPoints: number;
+  readonly maxHealthPoints: number;
+  readonly currentExperience: number;
+  readonly experienceToNextLevel: number;
 }
 
 export const dummyCharacterData: CharacterDataModel = {

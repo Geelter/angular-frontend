@@ -1,0 +1,35 @@
+<div>
+  <img
+    src="{{dummyCharacterData.avatar}}"
+    alt="character avatar"
+  >
+
+  <p>{{dummyCharacterData.name}} (ID: {{dummyCharacterData.id}})</p>
+
+  <div>
+    <p>Poziom:</p>
+    <p>{{dummyCharacterData.level}}</p>
+  </div>
+
+  <div>
+    <p>Energia:</p>
+    <p>{{dummyCharacterData.currentEnergy}}/{{dummyCharacterData.maxEnergy}}</p>
+  </div>
+
+  <div>
+    <p>Złoto:</p>
+    <p>{{dummyCharacterData.money}}</p>
+  </div>
+
+  <div>
+    <p>Doświadczenie:</p>
+    <p>{{dummyCharacterData.currentExperience}}/{{dummyCharacterData.experienceToNextLevel}}</p>
+    <p-progressBar [value]="experiencePercentage"></p-progressBar>
+  </div>
+
+  <div>
+    <p>Zdrowie:</p>
+    <p>{{dummyCharacterData.currentHealthPoints}}/{{dummyCharacterData.maxHealthPoints}}</p>
+    <p-progressBar [value]="healthPercentage"></p-progressBar>
+  </div>
+</div>
