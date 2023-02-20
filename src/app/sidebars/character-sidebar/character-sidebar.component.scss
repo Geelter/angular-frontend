@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-template-columns: 200px;
+  justify-items: stretch;
+  row-gap: 15px;
+  margin: 20px 0;
+}
+
+.character-avatar {
+  justify-self: center;
+}
+
+.character-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+.character-section p {
+  display: inline-block;
+}
+
+p-progressBar {
+  margin: 0 10px;
+}
