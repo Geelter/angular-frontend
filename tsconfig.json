@@ -5,6 +5,7 @@
     "baseUrl": "src",
     "paths": {
       "@core/*": ["app/core/*"],
+      "@shared/*": ["app/shared/*"],
       "@auth/*": ["app/features/auth/*"],
       "@assets/*": ["assets/*"]
     },

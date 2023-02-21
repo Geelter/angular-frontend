@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { CoreModule } from '@core/core.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from '@auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CoreModule, FormsModule],
+  imports: [CoreModule, AuthModule],
   providers: [],
   exports: [],
   bootstrap: [AppComponent],
