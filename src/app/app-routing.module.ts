@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SigninFormComponent } from './auth/signin-form/signin-form.component';
-import { SignupFormComponent } from './auth/signup-form/signup-form.component';
-import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   // {
