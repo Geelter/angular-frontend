@@ -3,11 +3,9 @@ import { FormsModule } from '@angular/forms';
 
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { SigninFormComponent } from './auth/signin-form/signin-form.component';
-import { SignupFormComponent } from './auth/signup-form/signup-form.component';
 
 @NgModule({
-  declarations: [AppComponent, SigninFormComponent, SignupFormComponent],
+  declarations: [AppComponent],
   imports: [CoreModule, FormsModule],
   providers: [],
   exports: [],
