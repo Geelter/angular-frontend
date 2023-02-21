@@ -20,12 +20,12 @@ import { ProgressBarModule } from 'primeng/progressbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenubarComponent } from './header/menubar/menubar.component';
-import { BannerComponent } from './header/banner/banner.component';
-import { HeaderComponent } from './header/header.component';
+import { MenubarComponent } from './core/header/menubar/menubar.component';
+import { BannerComponent } from './core/header/banner/banner.component';
+import { HeaderComponent } from './core/header/header.component';
 import { SigninFormComponent } from './auth/signin-form/signin-form.component';
 import { SignupFormComponent } from './auth/signup-form/signup-form.component';
-import { CharacterSidebarComponent } from './sidebars/character-sidebar/character-sidebar.component';
+import { CharacterSidebarComponent } from './core/sidebars/character-sidebar/character-sidebar.component';
 
 @NgModule({
   declarations: [
