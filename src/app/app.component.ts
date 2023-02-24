@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { Store } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
-import * as AuthActions from './features/auth/store/auth.actions';
+import * as AuthActions from '@auth/store/auth.actions';
 import { Subscription } from 'rxjs';
 
 @Component({
