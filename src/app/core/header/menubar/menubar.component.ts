@@ -1,6 +1,6 @@
 import { MenuItem } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
-import { NavigationItemsProviderService } from '../../services/navigation-items-provider.service';
+import { NavigationItemsProviderService } from '@core/services/navigation-items-provider.service';
 
 @Component({
   selector: 'app-menubar',

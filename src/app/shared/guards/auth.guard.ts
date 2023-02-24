@@ -6,7 +6,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../store/app.reducer';
+import * as fromApp from '../../store/app.reducer';
 import { Observable, take } from 'rxjs';
 import { map } from 'rxjs/operators';
 
