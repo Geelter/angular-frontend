@@ -24,6 +24,8 @@
     "@ngrx/eslint-plugin": "^15.3.0",
     "@ngrx/store": "^15.2.1",
     "@ngrx/store-devtools": "^15.2.1",
+    "express": "^4.18.2",
+    "path": "^0.12.7",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primeng": "^15.2.0",
