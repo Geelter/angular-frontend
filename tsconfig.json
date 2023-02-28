@@ -8,7 +8,8 @@
       "@shared/*": ["app/shared/*"],
       "@auth/*": ["app/features/auth/*"],
       "@env/*": ["environments/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@styles/*": ["styles/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
