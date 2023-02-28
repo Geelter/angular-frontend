@@ -1,0 +1,16 @@
+.auth-container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.auth-form {
+  grid-column: 1 / 2;
+}
+
+.auth-image {
+  object-fit: cover;
+  object-position: center;
+  grid-column: 2 / 3;
+  width: 100%;
+}

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { SupabaseAuthService } from '@core/services/supabase-auth.service';
 
 @Component({
-  selector: 'app-signin-form',
+  selector: 'app-login-form',
   templateUrl: './login-form.component.html',
 })
 export class LoginFormComponent {
