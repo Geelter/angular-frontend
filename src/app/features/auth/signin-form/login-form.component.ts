@@ -16,10 +16,10 @@ export class LoginFormComponent {
       console.log('Email: ' + email + ' Password: ' + password);
       this.supabaseAuth
         .login(email, password)
-        .then((user) => {
+        .then(user => {
           console.log(user);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     }
