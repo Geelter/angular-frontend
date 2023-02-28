@@ -1,10 +1,6 @@
-<form
-  #registerForm="ngForm"
-  (ngSubmit)="onSubmit()"
-  class="surface-card p-4 w-full"
->
+<form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="p-4 w-full">
   <div class="text-center mb-5">
-    <img src="assets/primeng.svg" alt="Image" height="50" class="mb-3">
+    <img src="assets/primeng.svg" alt="Image" height="50" class="mb-3" />
     <div class="text-900 text-3xl font-medium mb-3">Start Your Journey</div>
   </div>
 
@@ -20,12 +16,13 @@
         ngModel
         name="email"
         required
-        email
-      >
+        email />
     </div>
 
     <div class="form-group">
-      <label for="password" class="block text-900 font-medium mb-2">Password</label>
+      <label for="password" class="block text-900 font-medium mb-2"
+        >Password</label
+      >
       <input
         id="password"
         type="password"
@@ -34,12 +31,13 @@
         class="w-full mb-3 form-control"
         ngModel
         name="password"
-        required
-      >
+        required />
     </div>
 
     <div class="form-group">
-      <label for="password-confirm" class="block text-900 font-medium mb-2">Confirm Password</label>
+      <label for="password-confirm" class="block text-900 font-medium mb-2"
+        >Confirm Password</label
+      >
       <input
         id="password-confirm"
         type="password"
@@ -48,26 +46,26 @@
         class="w-full mb-3 form-control"
         ngModel
         name="password-confirm"
-        required
-      >
+        required />
     </div>
 
-    <div class="form-group flex align-items-center justify-content-between mb-6">
+    <div
+      class="form-group flex align-items-center justify-content-between mb-6">
       <div class="flex align-items-center">
         <p-checkbox
           id="accept-terms"
           [binary]="true"
           styleClass="mr-2"
           ngModel
-          name="terms"
-        ></p-checkbox>
+          name="terms"></p-checkbox>
         <label for="accept-terms">Accept Terms & Conditions</label>
       </div>
       <a
         href="https://www.blizzard.com/en-us/legal/fba4d00f-c7e4-4883-b8b9-1b4500a402ea/blizzard-end-user-license-agreement"
         target="_blank"
         class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
-      >Terms & Conditions</a>
+        >Terms & Conditions</a
+      >
     </div>
 
     <button
@@ -77,7 +75,6 @@
       label="Sign Up"
       icon="pi pi-user"
       class="w-full"
-      [disabled]="!registerForm.valid || !registerForm.value.terms"
-    ></button>
+      [disabled]="!registerForm.valid || !registerForm.value.terms"></button>
   </div>
 </form>
