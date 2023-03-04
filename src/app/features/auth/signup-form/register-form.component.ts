@@ -8,20 +8,15 @@ import { SupabaseAuthService } from '@core/services/supabase-auth.service';
 })
 export class RegisterFormComponent {
   @ViewChild('registerForm') registerForm: NgForm;
+  email = '';
+  password = '';
+  passwordConfirm = '';
 
   onSubmit() {
     if (this.registerForm.valid) {
       const { email, password } = this.registerForm.value;
 
-      console.log('Email: ' + email + ' Password: ' + password);
-      this.supabaseAuth
-        .register(email, password)
-        .then((user) => {
-          console.log(user);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.supabaseAuth.register(email, password);
     }
   }
 

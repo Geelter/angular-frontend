@@ -13,7 +13,7 @@
         placeholder="Email address"
         pInputText
         class="w-full mb-3"
-        ngModel
+        [(ngModel)]="email"
         name="email"
         required
         email />
@@ -21,17 +21,18 @@
 
     <div class="form-group">
       <label for="password" class="block text-900 font-medium mb-2"
-        >Password</label
-      >
+        >Password
+      </label>
       <input
         id="password"
         type="password"
         placeholder="Password"
         pInputText
         class="w-full mb-3"
-        ngModel
+        [(ngModel)]="password"
         name="password"
-        required />
+        required
+        minlength="6" />
     </div>
 
     <div class="form-group">
@@ -44,9 +45,10 @@
         placeholder="Confirm Password"
         pInputText
         class="w-full mb-3"
-        ngModel
+        [(ngModel)]="passwordConfirm"
         name="password-confirm"
-        required />
+        required
+        minlength="6" />
     </div>
 
     <div
@@ -75,6 +77,10 @@
       label="Sign Up"
       icon="pi pi-user"
       class="w-full"
-      [disabled]="!registerForm.valid || !registerForm.value.terms"></button>
+      [disabled]="
+        !registerForm.valid ||
+        !registerForm.value.terms ||
+        password !== passwordConfirm
+      "></button>
   </div>
 </form>
