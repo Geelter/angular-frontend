@@ -5,33 +5,37 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Store } from '@ngrx/store';
-import * as fromApp from '../../store/app.reducer';
-import { Observable, take } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthGuard implements CanActivate {
-  constructor(private store: Store<fromApp.AppState>, private router: Router) {}
+  constructor(
+    private supabaseAuth: SupabaseAuthService,
+    private router: Router
+  ) {}
 
-  canActivate(
+  async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    return this.store.select('auth').pipe(
-      take(1),
-      map((authState) => {
-        return authState.token;
-      }),
-      map((token) => {
-        if (token) {
-          return true;
-        }
-        return this.router.createUrlTree(['/auth/login']);
-      })
-    );
+  ): Promise<boolean | UrlTree> {
+    return new Promise((resolve, reject) => {
+      this.supabaseAuth
+        .getSession()
+        .then(data => {
+          if (data) {
+            resolve(true);
+          } else {
+            const _ = this.router.navigate(['/auth', 'login']);
+            resolve(false);
+          }
+        })
+        .catch(error => {
+          const _ = this.router.navigate(['/auth', 'login']);
+          resolve(false);
+        });
+    });
   }
 }
