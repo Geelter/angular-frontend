@@ -1,0 +1,15 @@
+@import "variables";
+
+.p-button {
+  background-color: $accent;
+  border: 1px solid $accent;
+}
+
+.p-button:enabled:hover {
+  background-color: $secondary;
+  border: 1px solid $accent;
+}
+
+.p-button:disabled {
+  background-color: $secondary;
+}

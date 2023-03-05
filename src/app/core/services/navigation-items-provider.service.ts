@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { SupabaseAuthService } from '@core/services/supabase-auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NavigationItemsProviderService {
+  constructor(private supabaseAuth: SupabaseAuthService) {}
+
   private items: MenuItem[] = [
     {
       label: 'File',
@@ -124,8 +127,9 @@ export class NavigationItemsProviderService {
       ],
     },
     {
-      label: 'Quit',
+      label: 'Logout',
       icon: 'pi pi-fw pi-power-off',
+      command: () => this.supabaseAuth.logout(),
     },
   ];
 
