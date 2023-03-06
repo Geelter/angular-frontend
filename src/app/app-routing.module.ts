@@ -19,6 +19,13 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'creator',
+    loadChildren: () =>
+      import('@creator/character-creator.module').then(
+        module => module.CharacterCreatorModule
+      ),
+  },
 ];
 
 @NgModule({
