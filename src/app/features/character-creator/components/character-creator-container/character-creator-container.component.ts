@@ -1,10 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+
+const tempSteps = [
+  {
+    label: 'Archetype',
+  },
+  {
+    label: 'Occupation',
+  },
+  {
+    label: 'Dark Secrets',
+  },
+  {
+    label: 'Disadvantages',
+  },
+  {
+    label: 'Advantages',
+  },
+  {
+    label: 'Attributes',
+  },
+  {
+    label: 'Name and Looks',
+  },
+  {
+    label: 'Relations',
+  },
+];
 
 @Component({
   selector: 'app-character-creator-container',
   templateUrl: './character-creator-container.component.html',
-  styleUrls: ['./character-creator-container.component.scss']
+  styleUrls: ['./character-creator-container.component.scss'],
 })
-export class CharacterCreatorContainerComponent {
+export class CharacterCreatorContainerComponent implements OnInit {
+  steps: MenuItem[];
 
+  ngOnInit() {
+    this.steps = tempSteps;
+  }
 }
