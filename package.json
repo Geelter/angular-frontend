@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write --config ./.prettierrc src/**/*{.ts,.js,.json,.scss,.html}"
+    "format": "prettier --write --config ./.prettierrc src/**/*{.ts,.js,.json,.scss,.html}",
     "heroku-postbuild": "ng build"
   },
   "private": true,
@@ -68,6 +68,7 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
   "engines": {
     "node": "19.4.0",
     "npm": "9.2.0"
