@@ -1,0 +1,31 @@
+.creator-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  column-gap: 10px;
+  grid-template-areas:
+    "steps steps"
+    "main detail"
+    "nav nav";
+  height: 100%;
+}
+
+.creator-steps {
+  grid-area: steps;
+  background-color: blueviolet;
+}
+
+.creator-main {
+  grid-area: main;
+  background-color: orangered;
+}
+
+.creator-detail {
+  grid-area: detail;
+  background-color: darkseagreen;
+}
+
+.creator-nav {
+  grid-area: nav;
+  background-color: rosybrown;
+}
