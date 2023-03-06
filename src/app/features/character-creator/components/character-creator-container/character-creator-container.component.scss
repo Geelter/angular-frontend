@@ -12,7 +12,7 @@
 
 .creator-steps {
   grid-area: steps;
-  background-color: cadetblue;
+  background-color: saddlebrown;
 }
 
 .creator-main {
@@ -28,4 +28,6 @@
 .creator-nav {
   grid-area: nav;
   background-color: rosybrown;
+  display: flex;
+  justify-content: space-between;
 }
