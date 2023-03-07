@@ -1,14 +1,7 @@
 <div class="creator-grid-container">
   <p-steps [model]="steps" class="creator-steps"></p-steps>
-  <div class="creator-main">
-    <h3>Main Area</h3>
-  </div>
-  <div class="creator-detail">
-    <h3>Detail Area</h3>
-  </div>
-  <!--  <app-character-creator-nav class="creator-nav"></app-character-creator-nav>-->
-  <div class="creator-nav">
-    <p-button>Prev</p-button>
-    <p-button>Next</p-button>
+  <!--  <app-character-creator-archetype></app-character-creator-archetype>-->
+  <div class="creator-current-step">
+    <router-outlet></router-outlet>
   </div>
 </div>
