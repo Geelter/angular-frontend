@@ -4,6 +4,7 @@ import { MenuItem } from 'primeng/api';
 const tempSteps = [
   {
     label: 'Archetype',
+    routerLink: 'archetype',
   },
   {
     label: 'Occupation',
@@ -16,6 +17,7 @@ const tempSteps = [
   },
   {
     label: 'Advantages',
+    routerLink: 'advantages',
   },
   {
     label: 'Attributes',
