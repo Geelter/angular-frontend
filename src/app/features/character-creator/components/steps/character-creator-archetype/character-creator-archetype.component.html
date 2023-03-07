@@ -16,7 +16,15 @@
       archetypes[chosenArchetype].description
     "></app-character-creator-detail-view>
   <div class="creator-step-nav">
-    <p-button label="Cancel" icon="pi pi-angle-left" iconPos="left"></p-button>
-    <p-button label="Next" icon="pi pi-angle-right" iconPos="right"></p-button>
+    <p-button
+      label="Cancel"
+      (onClick)="exitCreator()"
+      icon="pi pi-angle-left"
+      iconPos="left"></p-button>
+    <p-button
+      label="Next"
+      (onClick)="nextStep()"
+      icon="pi pi-angle-right"
+      iconPos="right"></p-button>
   </div>
 </div>
