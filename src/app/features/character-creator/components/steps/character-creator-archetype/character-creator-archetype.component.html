@@ -11,8 +11,10 @@
   </div>
   <app-character-creator-detail-view
     class="creator-step-detail"
-    title="Archetype Description"
-    [detailText]="lorem"></app-character-creator-detail-view>
+    [title]="archetypes[chosenArchetype].name"
+    [detailText]="
+      archetypes[chosenArchetype].description
+    "></app-character-creator-detail-view>
   <div class="creator-step-nav">
     <p-button label="Cancel" icon="pi pi-angle-left" iconPos="left"></p-button>
     <p-button label="Next" icon="pi pi-angle-right" iconPos="right"></p-button>
