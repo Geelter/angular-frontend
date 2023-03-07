@@ -97,32 +97,17 @@ export class NavigationItemsProviderService {
       ],
     },
     {
-      label: 'Events',
-      icon: 'pi pi-fw pi-calendar',
+      label: 'Characters',
+      icon: 'pi pi-fw pi-id-card',
       items: [
         {
-          label: 'Edit',
-          icon: 'pi pi-fw pi-pencil',
-          items: [
-            {
-              label: 'Save',
-              icon: 'pi pi-fw pi-calendar-plus',
-            },
-            {
-              label: 'Delete',
-              icon: 'pi pi-fw pi-calendar-minus',
-            },
-          ],
+          label: 'Create',
+          icon: 'pi pi-fw pi-user-plus',
+          routerLink: ['/creator', 'archetype'],
         },
         {
-          label: 'Archieve',
-          icon: 'pi pi-fw pi-calendar-times',
-          items: [
-            {
-              label: 'Remove',
-              icon: 'pi pi-fw pi-calendar-minus',
-            },
-          ],
+          label: 'Browse',
+          icon: 'pi pi-fw pi-book',
         },
       ],
     },
