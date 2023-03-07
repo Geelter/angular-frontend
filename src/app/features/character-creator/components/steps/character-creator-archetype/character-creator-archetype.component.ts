@@ -1,11 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { archetypes } from '@assets/dummy-data/archetypes';
 
 @Component({
   selector: 'app-character-creator-archetype',
   templateUrl: './character-creator-archetype.component.html',
-  styleUrls: ['../character-creator-step.scss'],
+  styleUrls: ['./character-creator-archetype.component.scss'],
 })
-export class CharacterCreatorArchetypeComponent {
-  lorem =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu mollis lorem, non eleifend lectus. Fusce elit nunc, laoreet et pulvinar ac, pretium quis nisl. Pellentesque scelerisque ligula eu fringilla ornare. Vestibulum fermentum nec quam in pellentesque. Duis urna mauris, mollis eget blandit non, porta nec metus. Vestibulum ac ex id justo condimentum viverra. In molestie sit amet sem sit amet commodo. Ut eget sodales tortor. Donec aliquam rutrum pellentesque. Nam molestie sed lectus vitae maximus. Donec non varius nibh, eget tincidunt risus. Vivamus a eleifend dolor. Praesent scelerisque et nisl at tincidunt.';
+export class CharacterCreatorArchetypeComponent implements OnInit {
+  constructor(private router: Router) {}
+  archetypes: { name: string; description: string }[];
+  chosenArchetype = 0;
+  nextStep() {
+    this.router.navigate(['/creator', 'advantages']);
+  }
+
+  exitCreator() {
+    this.router.navigate(['/']);
+  }
+
+  chooseArchetype(index: number) {
+    this.chosenArchetype = index;
+  }
+
+  ngOnInit() {
+    this.archetypes = archetypes;
+  }
 }
