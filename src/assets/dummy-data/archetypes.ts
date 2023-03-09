@@ -1,5 +1,11 @@
-export const archetypes = [
+export interface Archetype {
+  id: number;
+  name: string;
+  description: string;
+}
+export const archetypes: Archetype[] = [
   {
+    id: 1,
     name: 'Academic',
     description:
       ' The Academic studies the world from her desk. Everything is interconnected via logical rules of causality, yet she suspects something must be wrong. Pieces refuse to fall into the safe,\n' +
@@ -7,6 +13,7 @@ export const archetypes = [
       'Does she dare to look for the truth?',
   },
   {
+    id: 2,
     name: 'Agent',
     description:
       'The Agent does whatever is necessary to protect and serve her employer’s best interests. People are simply resources to be used, abused, and expended. Anyone standing in the way must be removed.\n' +
@@ -15,6 +22,7 @@ export const archetypes = [
       'and ‘evil’ have lost all meaning.',
   },
   {
+    id: 3,
     name: 'Artist',
     description:
       'The Artist exists only to create, to give themselves, body and soul, over to the arts. They express this desire through many mediums. A hypnotic painting, music trapping the audience in pure ecstasy, books spellbinding their\n' +
