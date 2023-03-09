@@ -1,1 +1,26 @@
-<p>character-creator-name works!</p>
+<!--<p>character-creator-name works!</p>-->
+<div class="creator-step-grid">
+  <div class="creator-step-main">
+    <span class="p-float-label">
+      <input
+        id="character-name"
+        type="text"
+        [(ngModel)]="characterName"
+        pInputText
+        (ngModelChange)="saveNameToService($event)" />
+      <label for="character-name">Character Name</label>
+    </span>
+  </div>
+  <div class="creator-step-nav w-full">
+    <p-button
+      label="Previous"
+      (onClick)="previousStep()"
+      icon="pi pi-angle-left"
+      iconPos="left"></p-button>
+    <p-button
+      label="Submit"
+      (onClick)="submitCharacter()"
+      icon="pi pi-angle-right"
+      iconPos="right"></p-button>
+  </div>
+</div>
