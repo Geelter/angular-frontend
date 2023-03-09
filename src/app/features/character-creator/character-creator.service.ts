@@ -16,4 +16,15 @@ export class CharacterCreatorService {
   get chosenArchetype() {
     return this.archetypes[this.chosenArchetypeIndex];
   }
+
+  submitCharacter() {
+    if (this.characterDataComplete) {
+      console.log(
+        'Chosen archetype is ' + dummyArchetypes[this.chosenArchetypeIndex].name
+      );
+      console.log('Chosen character name is ' + this.characterName);
+    } else {
+      console.log('Missing required character data');
+    }
+  }
 }
