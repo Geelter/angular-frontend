@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { archetypes } from '@assets/dummy-data/archetypes';
+import { CharacterCreatorService } from '@creator/character-creator.service';
 
 @Component({
   selector: 'app-character-creator-archetype',
   templateUrl: './character-creator-archetype.component.html',
   styleUrls: ['./character-creator-archetype.component.scss'],
 })
-export class CharacterCreatorArchetypeComponent implements OnInit {
-  constructor(private router: Router) {}
-  archetypes: { name: string; description: string }[];
-  chosenArchetype = 0;
+export class CharacterCreatorArchetypeComponent {
+  constructor(
+    private router: Router,
+    public creatorService: CharacterCreatorService
+  ) {}
+
   nextStep() {
-    this.router.navigate(['/creator', 'advantages']);
+    this.router.navigate(['/creator', 'name']);
   }
 
   exitCreator() {
@@ -20,10 +22,6 @@ export class CharacterCreatorArchetypeComponent implements OnInit {
   }
 
   chooseArchetype(index: number) {
-    this.chosenArchetype = index;
-  }
-
-  ngOnInit() {
-    this.archetypes = archetypes;
+    this.creatorService.chosenArchetypeIndex = index;
   }
 }

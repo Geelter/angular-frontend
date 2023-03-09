@@ -3,7 +3,7 @@
     <h2 class="text-center m-2">Available Archetypes</h2>
     <button
       class="archetype-button"
-      *ngFor="let archetype of archetypes; index as index"
+      *ngFor="let archetype of this.creatorService.archetypes; index as index"
       pButton
       pRipple
       [label]="archetype.name"
@@ -11,9 +11,9 @@
   </div>
   <app-character-creator-detail-view
     class="creator-step-detail"
-    [title]="archetypes[chosenArchetype].name"
+    [title]="this.creatorService.chosenArchetype.name"
     [detailText]="
-      archetypes[chosenArchetype].description
+      this.creatorService.chosenArchetype.description
     "></app-character-creator-detail-view>
   <div class="creator-step-nav">
     <p-button
