@@ -3,7 +3,7 @@ export interface Archetype {
   name: string;
   description: string;
 }
-export const archetypes: Archetype[] = [
+export const dummyArchetypes: Archetype[] = [
   {
     id: 1,
     name: 'Academic',

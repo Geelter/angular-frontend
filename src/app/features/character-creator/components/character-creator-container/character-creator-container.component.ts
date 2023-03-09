@@ -7,26 +7,8 @@ const tempSteps = [
     routerLink: 'archetype',
   },
   {
-    label: 'Occupation',
-  },
-  {
-    label: 'Dark Secrets',
-  },
-  {
-    label: 'Disadvantages',
-  },
-  {
-    label: 'Advantages',
-    routerLink: 'advantages',
-  },
-  {
-    label: 'Attributes',
-  },
-  {
-    label: 'Name and Looks',
-  },
-  {
-    label: 'Relations',
+    label: 'Name',
+    routerLink: 'name',
   },
 ];
 
