@@ -4,11 +4,6 @@ import { HomeComponent } from '@core/home/home.component';
 import { AuthGuard } from '@shared/guards/auth.guard';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/auth/login',
-  //   pathMatch: 'full',
-  // },
   {
     path: 'auth',
     loadChildren: () =>
