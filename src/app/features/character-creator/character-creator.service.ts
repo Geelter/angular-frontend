@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { dummyArchetypes } from '@assets/dummy-data/dummyArchetypes';
 import { SupabaseService } from '@core/services/supabase.service';
 import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { StepData } from '@creator/step-data.guard';
+import { dummyArchetypes } from '@assets/dummy-data/dummyArchetypes';
 
 @Injectable()
 export class CharacterCreatorService {
@@ -13,14 +14,18 @@ export class CharacterCreatorService {
 
   characterName = '';
 
-  archetypes = dummyArchetypes;
+  stepData: StepData;
 
   get characterDataComplete() {
     return !!this.chosenArchetype && !!this.characterName;
   }
 
   get chosenArchetype() {
-    return this.archetypes[this.chosenArchetypeIndex];
+    return this.stepData?.archetypes[this.chosenArchetypeIndex];
+  }
+
+  fetchStepData() {
+    this.stepData = { archetypes: dummyArchetypes };
   }
 
   async submitCharacter() {
