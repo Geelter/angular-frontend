@@ -8,9 +8,10 @@ import { CharacterCreatorDetailViewComponent } from '@creator/components/reusabl
 import { CharacterCreatorArchetypeComponent } from '@creator/components/steps/character-creator-archetype/character-creator-archetype.component';
 import { CharacterCreatorService } from '@creator/character-creator.service';
 import { CharacterCreatorNameComponent } from './components/steps/character-creator-name/character-creator-name.component';
+import { StepDataGuard } from '@creator/step-data.guard';
 
 @NgModule({
-  providers: [CharacterCreatorService],
+  providers: [CharacterCreatorService, StepDataGuard],
   declarations: [
     CharacterCreatorContainerComponent,
     CharacterCreatorDetailViewComponent,
