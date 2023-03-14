@@ -3,18 +3,22 @@ import { SupabaseService } from '@core/services/supabase.service';
 import { SupabaseAuthService } from '@core/services/supabase-auth.service';
 import { StepData } from '@creator/step-data.guard';
 import { dummyArchetypes } from '@assets/dummy-data/dummyArchetypes';
-import { Router } from '@angular/router';
+import { characterCreatorSteps } from '@creator/character-creator-steps';
 
 @Injectable()
 export class CharacterCreatorService {
   constructor(
     private supabase: SupabaseService,
-    private supabaseAuth: SupabaseAuthService,
-    private router: Router
-  ) {}
+    private supabaseAuth: SupabaseAuthService
+  ) {
+    this.fetchStepData();
+    this.fetchStepRoutes();
+  }
   chosenArchetypeIndex = 0;
 
   characterName = '';
+
+  stepRoutes: string[][];
 
   stepData: StepData;
 
@@ -30,26 +34,28 @@ export class CharacterCreatorService {
     this.stepData = { archetypes: dummyArchetypes };
   }
 
-  async submitCharacter() {
+  fetchStepRoutes() {
+    this.stepRoutes = characterCreatorSteps;
+  }
+
+  getRoutesForStep(number: number): string[][] {
+    return [this.stepRoutes[number - 1], this.stepRoutes[number + 1]];
+  }
+
+  async submitCharacter(): Promise<boolean> {
     const userID = await this.supabaseAuth.getUserID();
 
     if (!this.characterDataComplete || !userID) {
-      return;
+      return false;
     }
 
-    const { data, error } = await this.supabase.client
+    const { error } = await this.supabase.client
       .from('player_character')
       .insert({
         user_id: userID,
         name: this.characterName,
-      })
-      .select();
+      });
 
-    if (!error && data) {
-      const _ = this.router.navigate(['/']);
-      return;
-    } else {
-      console.log('Error submitting the character. Try again.');
-    }
+    return !error;
   }
 }
