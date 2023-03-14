@@ -13,11 +13,11 @@ const tempSteps = [
 ];
 
 @Component({
-  selector: 'app-character-creator-container',
-  templateUrl: './character-creator-container.component.html',
-  styleUrls: ['./character-creator-container.component.scss'],
+  selector: 'app-creator-container',
+  templateUrl: './creator-container.component.html',
+  styleUrls: ['./creator-container.component.scss'],
 })
-export class CharacterCreatorContainerComponent implements OnInit {
+export class CreatorContainerComponent implements OnInit {
   steps: MenuItem[];
 
   ngOnInit() {

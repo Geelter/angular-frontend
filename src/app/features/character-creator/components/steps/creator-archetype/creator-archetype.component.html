@@ -12,12 +12,12 @@
       [label]="archetype.name"
       (click)="chooseArchetype(index)"></button>
   </div>
-  <app-character-creator-detail-view
+  <app-creator-detail-view
     class="creator-step-detail"
     [title]="this.creatorService.chosenArchetype.name"
     [detailText]="
       this.creatorService.chosenArchetype.description
-    "></app-character-creator-detail-view>
+    "></app-creator-detail-view>
   <div class="creator-step-nav">
     <p-button
       label="Cancel"

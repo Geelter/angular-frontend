@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CharacterCreatorArchetypeComponent } from './character-creator-archetype.component';
+import { CreatorArchetypeComponent } from './creator-archetype.component';
 
 describe('CharacterCreatorArchetypeComponent', () => {
-  let component: CharacterCreatorArchetypeComponent;
-  let fixture: ComponentFixture<CharacterCreatorArchetypeComponent>;
+  let component: CreatorArchetypeComponent;
+  let fixture: ComponentFixture<CreatorArchetypeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CharacterCreatorArchetypeComponent],
+      declarations: [CreatorArchetypeComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CharacterCreatorArchetypeComponent);
+    fixture = TestBed.createComponent(CreatorArchetypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

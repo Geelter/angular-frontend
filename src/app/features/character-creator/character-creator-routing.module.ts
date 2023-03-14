@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CharacterCreatorContainerComponent } from '@creator/components/character-creator-container/character-creator-container.component';
-import { CharacterCreatorArchetypeComponent } from '@creator/components/steps/character-creator-archetype/character-creator-archetype.component';
-import { CharacterCreatorNameComponent } from '@creator/components/steps/character-creator-name/character-creator-name.component';
+import { CreatorContainerComponent } from '@creator/components/creator-container/creator-container.component';
+import { CreatorArchetypeComponent } from '@creator/components/steps/creator-archetype/creator-archetype.component';
+import { CreatorNameComponent } from '@creator/components/steps/creator-name/creator-name.component';
 import { StepDataGuard } from '@creator/step-data.guard';
 
 const routes: Routes = [
   {
     path: '',
     canActivate: [StepDataGuard],
-    component: CharacterCreatorContainerComponent,
+    component: CreatorContainerComponent,
     children: [
       {
         path: 'archetype',
-        component: CharacterCreatorArchetypeComponent,
+        component: CreatorArchetypeComponent,
       },
       {
         path: 'name',
-        component: CharacterCreatorNameComponent,
+        component: CreatorNameComponent,
       },
     ],
   },

@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { CharacterCreatorService } from '@creator/character-creator.service';
 
 @Component({
-  selector: 'app-character-creator-name',
-  templateUrl: './character-creator-name.component.html',
-  styleUrls: ['./character-creator-name.component.scss'],
+  selector: 'app-creator-name',
+  templateUrl: './creator-name.component.html',
+  styleUrls: ['./creator-name.component.scss'],
 })
-export class CharacterCreatorNameComponent implements OnInit {
+export class CreatorNameComponent implements OnInit {
   constructor(
     private router: Router,
     private creatorService: CharacterCreatorService

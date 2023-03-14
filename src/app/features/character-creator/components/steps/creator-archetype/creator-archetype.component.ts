@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { CharacterCreatorService } from '@creator/character-creator.service';
 
 @Component({
-  selector: 'app-character-creator-archetype',
-  templateUrl: './character-creator-archetype.component.html',
-  styleUrls: ['./character-creator-archetype.component.scss'],
+  selector: 'app-creator-archetype',
+  templateUrl: './creator-archetype.component.html',
+  styleUrls: ['./creator-archetype.component.scss'],
 })
-export class CharacterCreatorArchetypeComponent {
+export class CreatorArchetypeComponent {
   constructor(
     private router: Router,
     public creatorService: CharacterCreatorService

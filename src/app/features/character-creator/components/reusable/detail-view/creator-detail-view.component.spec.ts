@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CharacterCreatorDetailViewComponent } from './character-creator-detail-view.component';
+import { CreatorDetailViewComponent } from './creator-detail-view.component';
 
 describe('DetailViewComponent', () => {
-  let component: CharacterCreatorDetailViewComponent;
-  let fixture: ComponentFixture<CharacterCreatorDetailViewComponent>;
+  let component: CreatorDetailViewComponent;
+  let fixture: ComponentFixture<CreatorDetailViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CharacterCreatorDetailViewComponent],
+      declarations: [CreatorDetailViewComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CharacterCreatorDetailViewComponent);
+    fixture = TestBed.createComponent(CreatorDetailViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
