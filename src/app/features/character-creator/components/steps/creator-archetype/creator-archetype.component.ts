@@ -11,14 +11,24 @@ export class CreatorArchetypeComponent {
   constructor(
     private router: Router,
     public creatorService: CharacterCreatorService
-  ) {}
+  ) {
+    [this.exitRoute, this.nextStepRoute] = this.creatorService.getRoutesForStep(
+      this.stepNumber
+    );
+  }
+
+  private stepNumber = 1;
+
+  private exitRoute: string[];
+
+  private nextStepRoute: string[];
 
   nextStep() {
-    this.router.navigate(['/creator', 'name']);
+    this.router.navigate(this.nextStepRoute);
   }
 
   exitCreator() {
-    this.router.navigate(['/']);
+    this.router.navigate(this.exitRoute);
   }
 
   chooseArchetype(index: number) {

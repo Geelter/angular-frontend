@@ -11,15 +11,31 @@ export class CreatorNameComponent implements OnInit {
   constructor(
     private router: Router,
     private creatorService: CharacterCreatorService
-  ) {}
+  ) {
+    [this.previousStepRoute, this.exitRoute] =
+      this.creatorService.getRoutesForStep(this.stepNumber);
+  }
+
+  private stepNumber = 3;
+
+  private previousStepRoute: string[];
+
+  private exitRoute: string[];
+
   characterName: string;
 
   previousStep() {
-    this.router.navigate(['/creator', 'archetype']);
+    this.router.navigate(this.previousStepRoute);
   }
 
-  submitCharacter() {
-    this.creatorService.submitCharacter();
+  async submitCharacter() {
+    const result = await this.creatorService.submitCharacter();
+
+    if (result) {
+      this.router.navigate(this.exitRoute);
+    } else {
+      console.log('');
+    }
   }
 
   saveNameToService(name: string) {
