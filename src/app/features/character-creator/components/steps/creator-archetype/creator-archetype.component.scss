@@ -1,9 +1,5 @@
 @import "app/features/character-creator/components/steps/character-creator-step";
 
-.creator-step-grid {
-  grid-template-columns: 0.55fr 1fr;
-}
-
 .creator-step-main {
   display: flex;
   flex-direction: column;
