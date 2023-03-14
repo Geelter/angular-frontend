@@ -31,7 +31,14 @@ export class CharacterCreatorService {
   }
 
   fetchStepData() {
-    this.stepData = { archetypes: dummyArchetypes };
+    this.stepData = {
+      archetypes: dummyArchetypes,
+      attributes: {
+        maximumValue: 2,
+        minimumValue: -2,
+        sumValue: 0,
+      },
+    };
   }
 
   fetchStepRoutes() {

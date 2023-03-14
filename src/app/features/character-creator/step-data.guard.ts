@@ -11,6 +11,11 @@ import { CharacterCreatorService } from '@creator/character-creator.service';
 
 export interface StepData {
   archetypes: Archetype[];
+  attributes: {
+    maximumValue: number;
+    minimumValue: number;
+    sumValue: number;
+  };
 }
 
 @Injectable()
