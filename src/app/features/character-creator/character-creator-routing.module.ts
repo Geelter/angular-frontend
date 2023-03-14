@@ -5,6 +5,7 @@ import { CreatorContainerComponent } from '@creator/components/creator-container
 import { CreatorArchetypeComponent } from '@creator/components/steps/creator-archetype/creator-archetype.component';
 import { CreatorNameComponent } from '@creator/components/steps/creator-name/creator-name.component';
 import { StepDataGuard } from '@creator/step-data.guard';
+import { CreatorAttributesComponent } from '@creator/components/steps/creator-attributes/creator-attributes.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
       {
         path: 'archetype',
         component: CreatorArchetypeComponent,
+      },
+      {
+        path: 'attributes',
+        component: CreatorAttributesComponent,
       },
       {
         path: 'name',

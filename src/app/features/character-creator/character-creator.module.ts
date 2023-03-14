@@ -9,6 +9,7 @@ import { CreatorArchetypeComponent } from '@creator/components/steps/creator-arc
 import { CharacterCreatorService } from '@creator/character-creator.service';
 import { CreatorNameComponent } from './components/steps/creator-name/creator-name.component';
 import { StepDataGuard } from '@creator/step-data.guard';
+import { CreatorAttributesComponent } from './components/steps/creator-attributes/creator-attributes.component';
 
 @NgModule({
   providers: [CharacterCreatorService, StepDataGuard],
@@ -17,6 +18,7 @@ import { StepDataGuard } from '@creator/step-data.guard';
     CreatorDetailViewComponent,
     CreatorArchetypeComponent,
     CreatorNameComponent,
+    CreatorAttributesComponent,
   ],
   imports: [CharacterCreatorRoutingModule, CommonModule, SharedModule],
   exports: [CreatorContainerComponent],

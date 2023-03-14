@@ -7,6 +7,10 @@ const tempSteps = [
     routerLink: 'archetype',
   },
   {
+    label: 'Attributes',
+    routerLink: 'attributes',
+  },
+  {
     label: 'Name',
     routerLink: 'name',
   },
