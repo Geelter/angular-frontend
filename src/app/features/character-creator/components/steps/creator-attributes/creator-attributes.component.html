@@ -1,4 +1,31 @@
 <div class="creator-step-grid">
+  <div class="creator-step-main">
+    <h2>Available points: {{ creatorService.attributesSum }}</h2>
+    <hr />
+    <h2>Passive Attributes</h2>
+    <div *ngFor="let attribute of creatorService.stepData.attributes.passive">
+      <p>{{ attribute.name }}</p>
+      <p-inputNumber
+        [(ngModel)]="attribute.value"
+        [showButtons]="true"
+        buttonLayout="horizontal"
+        [min]="creatorService.stepData.attributeConfig.minimumValue"
+        [max]="creatorService.stepData.attributeConfig.maximumValue"
+        [step]="1"></p-inputNumber>
+    </div>
+    <hr />
+    <h2>Active Attributes</h2>
+    <div *ngFor="let attribute of creatorService.stepData.attributes.active">
+      <p>{{ attribute.name }}</p>
+      <p-inputNumber
+        [(ngModel)]="attribute.value"
+        [showButtons]="true"
+        buttonLayout="horizontal"
+        [min]="creatorService.stepData.attributeConfig.minimumValue"
+        [max]="creatorService.stepData.attributeConfig.maximumValue"
+        [step]="1"></p-inputNumber>
+    </div>
+  </div>
   <div class="creator-step-nav">
     <p-button
       label="Previous"
@@ -9,6 +36,7 @@
       label="Next"
       (onClick)="nextStep()"
       icon="pi pi-angle-right"
-      iconPos="right"></p-button>
+      iconPos="right"
+      [disabled]="!creatorService.attributeSumCorrect"></p-button>
   </div>
 </div>

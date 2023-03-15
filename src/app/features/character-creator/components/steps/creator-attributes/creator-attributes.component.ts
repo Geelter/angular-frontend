@@ -10,7 +10,7 @@ import { CharacterCreatorService } from '@creator/character-creator.service';
 export class CreatorAttributesComponent {
   constructor(
     private router: Router,
-    private creatorService: CharacterCreatorService
+    public creatorService: CharacterCreatorService
   ) {
     [this.previousStepRoute, this.nextStepRoute] =
       this.creatorService.getRoutesForStep(this.stepNumber);
