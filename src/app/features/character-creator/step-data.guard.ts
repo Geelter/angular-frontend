@@ -9,12 +9,23 @@ import {
 import { Archetype } from '@assets/dummy-data/dummyArchetypes';
 import { CharacterCreatorService } from '@creator/character-creator.service';
 
+interface Attribute {
+  name: string;
+  id: number;
+  value: number;
+}
+
 export interface StepData {
   archetypes: Archetype[];
-  attributes: {
+  attributeConfig: {
     maximumValue: number;
     minimumValue: number;
     sumValue: number;
+    initialValue: number;
+  };
+  attributes: {
+    passive: Attribute[];
+    active: Attribute[];
   };
 }
 
