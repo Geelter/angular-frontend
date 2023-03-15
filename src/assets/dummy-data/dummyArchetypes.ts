@@ -1,8 +1,5 @@
-export interface Archetype {
-  id: number;
-  name: string;
-  description: string;
-}
+import { Archetype } from '@creator/models/archetype';
+
 export const dummyArchetypes: Archetype[] = [
   {
     id: 1,
