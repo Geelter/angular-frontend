@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { RippleModule } from 'primeng/ripple';
+import { SidebarModule } from 'primeng/sidebar';
 import { StepsModule } from 'primeng/steps';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { StepsModule } from 'primeng/steps';
     MenubarModule,
     ProgressBarModule,
     RippleModule,
+    SidebarModule,
     StepsModule,
   ],
   exports: [
@@ -34,6 +36,7 @@ import { StepsModule } from 'primeng/steps';
     MenubarModule,
     ProgressBarModule,
     RippleModule,
+    SidebarModule,
     StepsModule,
   ],
 })
