@@ -1,5 +1,11 @@
-<div *ngFor="let category of categories">
-  <p-panel [header]="category.name" toggleable="true">{{
-    category.description
-  }}</p-panel>
+<div>
+  <p-panel [toggleable]="true" *ngFor="let category of categories">
+    <ng-template pTemplate="header">
+      <span class="font-semibold text-xl">{{ category.name }}</span>
+    </ng-template>
+    <p>{{ category.description }}</p>
+    <ng-template pTemplate="footer">
+      <p-button [routerLink]="['threads']">Explore</p-button>
+    </ng-template>
+  </p-panel>
 </div>
