@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { RippleModule } from 'primeng/ripple';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import { RippleModule } from 'primeng/ripple';
     MenubarModule,
     ProgressBarModule,
     RippleModule,
+    PanelModule,
   ],
   exports: [
     ButtonModule,
@@ -29,6 +31,7 @@ import { RippleModule } from 'primeng/ripple';
     MenubarModule,
     ProgressBarModule,
     RippleModule,
+    PanelModule,
   ],
 })
 export class SharedModule {}
