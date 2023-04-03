@@ -7,9 +7,10 @@
       "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
       "@auth/*": ["app/features/auth/*"],
+      "@posts/*": ["app/features/posts/*"],
       "@env/*": ["environments/*"],
       "@assets/*": ["assets/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
