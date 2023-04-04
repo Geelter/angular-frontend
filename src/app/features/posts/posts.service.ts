@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Category } from '@assets/dummy-data/posts';
-import { dummyCategories } from '@assets/dummy-data/posts';
+import { Category, Thread } from '@assets/dummy-data/posts';
+import { SupabaseService } from '@core/services/supabase.service';
+import Dictionary from '@shared/dictionary';
 
 @Injectable()
 export class PostsService {
