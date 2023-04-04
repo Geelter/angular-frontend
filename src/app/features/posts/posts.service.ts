@@ -32,4 +32,19 @@ export class PostsService {
   categoriesCached() {
     return !!this.postCategories.length;
   }
+
+  async fetchCategoryThreads(categoryID: string) {
+    const { data: categoryThreads, error } = await this.supabase.client
+      .from('post_threads')
+      .select('*')
+      .eq('category_id', categoryID);
+
+    if (categoryThreads && !error) {
+      const threads = categoryThreads as Thread[];
+      this.categoryThreads.add(categoryID, threads);
+      return threads;
+    } else {
+      throw 'Error fetching threads for specified category';
+    }
+  }
 }
