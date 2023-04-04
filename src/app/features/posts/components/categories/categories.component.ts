@@ -12,6 +12,8 @@ export class CategoriesComponent implements OnInit {
   constructor(public postsService: PostsService) {}
   categories: Promise<Category[]>;
 
+  categoriesAreLoading = true;
+
   chooseCategory(categoryID: number) {
     if (!this.postsService.categoryThreads.containsKey(categoryID.toString())) {
       const _ = this.postsService.fetchCategoryThreads(categoryID.toString());
@@ -22,9 +24,12 @@ export class CategoriesComponent implements OnInit {
     if (this.postsService.categoriesCached()) {
       this.categories = new Promise<Category[]>(resolve => {
         resolve(this.postsService.getSavedCategories());
+        this.categoriesAreLoading = false;
       });
     } else {
-      this.categories = this.postsService.fetchPostCategories();
+      this.categories = this.postsService.fetchPostCategories().finally(() => {
+        this.categoriesAreLoading = false;
+      });
     }
   }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
@@ -14,6 +15,7 @@ import { PanelModule } from 'primeng/panel';
   declarations: [],
   imports: [
     CommonModule,
+    AvatarModule,
     ButtonModule,
     CheckboxModule,
     FormsModule,
@@ -24,6 +26,7 @@ import { PanelModule } from 'primeng/panel';
     PanelModule,
   ],
   exports: [
+    AvatarModule,
     ButtonModule,
     CheckboxModule,
     FormsModule,

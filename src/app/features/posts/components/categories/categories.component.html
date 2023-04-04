@@ -1,3 +1,6 @@
+<div class="progress-spinner" *ngIf="categoriesAreLoading">
+  <p-progressSpinner></p-progressSpinner>
+</div>
 <div>
   <p-panel [toggleable]="true" *ngFor="let category of categories | async">
     <ng-template pTemplate="header">
@@ -6,7 +9,7 @@
     <p>{{ category.description }}</p>
     <ng-template pTemplate="footer">
       <p-button
-        [routerLink]="['/home', 'posts', category.id, 'threads']"
+        [routerLink]="['/', 'posts', category.id, 'threads']"
         (onClick)="chooseCategory(category.id)"
         >Explore</p-button
       >

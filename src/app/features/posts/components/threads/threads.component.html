@@ -1,3 +1,6 @@
+<div class="progress-spinner" *ngIf="threadsAreLoading">
+  <p-progressSpinner></p-progressSpinner>
+</div>
 <div>
   <p-panel [toggleable]="true" *ngFor="let thread of categoryThreads | async">
     <ng-template pTemplate="header">

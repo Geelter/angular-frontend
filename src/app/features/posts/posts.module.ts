@@ -6,6 +6,7 @@ import { PostsRoutingModule } from '@posts/posts-routing.module';
 import { ThreadsComponent } from './components/threads/threads.component';
 import { PostsService } from '@posts/posts.service';
 import { PostsContainerComponent } from './components/posts-container/posts-container.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   providers: [PostsService],
@@ -14,7 +15,12 @@ import { PostsContainerComponent } from './components/posts-container/posts-cont
     ThreadsComponent,
     PostsContainerComponent,
   ],
-  imports: [CommonModule, PostsRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    PostsRoutingModule,
+    SharedModule,
+    ProgressSpinnerModule,
+  ],
   exports: [CategoriesComponent],
 })
 export class PostsModule {}
