@@ -47,4 +47,12 @@ export class PostsService {
       throw 'Error fetching threads for specified category';
     }
   }
+
+  getSavedCategoryThreads(categoryID: string) {
+    return this.categoryThreads.getItem(categoryID);
+  }
+
+  threadsCached(categoryID: string): boolean {
+    return this.categoryThreads.containsKey(categoryID);
+  }
 }
