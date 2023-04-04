@@ -5,7 +5,11 @@
     </ng-template>
     <p>{{ category.description }}</p>
     <ng-template pTemplate="footer">
-      <p-button [routerLink]="['posts']">Explore</p-button>
+      <p-button
+        [routerLink]="['/home', 'posts', category.id, 'threads']"
+        (onClick)="chooseCategory(category.id)"
+        >Explore</p-button
+      >
     </ng-template>
   </p-panel>
 </div>

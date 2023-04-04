@@ -12,6 +12,12 @@ export class CategoriesComponent implements OnInit {
   constructor(public postsService: PostsService) {}
   categories: Promise<Category[]>;
 
+  chooseCategory(categoryID: number) {
+    if (!this.postsService.categoryThreads.containsKey(categoryID.toString())) {
+      const _ = this.postsService.fetchCategoryThreads(categoryID.toString());
+    }
+  }
+
   ngOnInit() {
     if (this.postsService.categoriesCached()) {
       this.categories = new Promise<Category[]>(resolve => {
