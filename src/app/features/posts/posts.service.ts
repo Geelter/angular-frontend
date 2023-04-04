@@ -24,7 +24,12 @@ export class PostsService {
       throw 'Error fetching post categories';
     }
   }
-  private fetchPostCategories(): Category[] {
-    return dummyCategories;
+
+  getSavedCategories() {
+    return this.postCategories;
+  }
+
+  categoriesCached() {
+    return !!this.postCategories.length;
   }
 }
