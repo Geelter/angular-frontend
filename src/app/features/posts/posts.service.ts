@@ -4,15 +4,25 @@ import { dummyCategories } from '@assets/dummy-data/posts';
 
 @Injectable()
 export class PostsService {
-  constructor() {
-    this.postCategories = this.fetchPostCategories();
+  constructor(private supabase: SupabaseService) {
+    this.fetchPostCategories().then(categories => {
+      this.postCategories = categories;
+    });
   }
-  private postCategories: Category[];
-  getPostCategories(): Category[] {
-    if (!this.postCategories.length) {
-      this.fetchPostCategories();
+  public postCategories: Category[] = [];
+
+  public categoryThreads = new Dictionary<Thread[]>();
+
+  async fetchPostCategories(): Promise<Category[]> {
+    const { data: postCategories, error } = await this.supabase.client
+      .from('post_categories')
+      .select('*');
+
+    if (postCategories && !error) {
+      return postCategories as Category[];
+    } else {
+      throw 'Error fetching post categories';
     }
-    return this.postCategories;
   }
   private fetchPostCategories(): Category[] {
     return dummyCategories;
