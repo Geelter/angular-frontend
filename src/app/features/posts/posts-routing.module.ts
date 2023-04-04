@@ -15,7 +15,7 @@ const routes: Routes = [
         component: CategoriesComponent,
       },
       {
-        path: 'threads',
+        path: ':id/threads',
         component: ThreadsComponent,
       },
     ],
