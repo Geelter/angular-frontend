@@ -19,7 +19,7 @@ export class SupabaseAuthService {
     });
 
     if (!error && user && session) {
-      await this.router.navigate(['/home']);
+      await this.router.navigate(['/']);
     }
   }
 
@@ -33,7 +33,7 @@ export class SupabaseAuthService {
     });
 
     if (!error && user && session) {
-      await this.router.navigate(['/home']);
+      await this.router.navigate(['/']);
     }
   }
 
