@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ThreadsComponent } from '@posts/components/threads/threads.component';
 import { PostsContainerComponent } from '@posts/components/posts-container/posts-container.component';
+import { PostsComponent } from '@posts/components/posts/posts.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: ':id/threads',
         component: ThreadsComponent,
+      },
+      {
+        path: ':thread_id',
+        component: PostsComponent,
       },
     ],
   },
