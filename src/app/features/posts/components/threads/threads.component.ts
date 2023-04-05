@@ -18,24 +18,19 @@ export class ThreadsComponent implements OnInit {
 
   categoryThreads: Promise<Thread[]>;
 
-  threadsAreLoading = true;
+  threadsAreLoading: boolean;
 
   ngOnInit() {
+    this.threadsAreLoading = true;
+
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.categoryID = params.get('id')!;
+      this.categoryID = params.get('category_id')!;
     });
 
-    if (this.postsService.threadsCached(this.categoryID)) {
-      this.categoryThreads = new Promise<Thread[]>(resolve => {
-        resolve(this.postsService.getSavedCategoryThreads(this.categoryID));
+    this.categoryThreads = this.postsService
+      .getThreadsForCategoryID(this.categoryID)
+      .finally(() => {
         this.threadsAreLoading = false;
       });
-    } else {
-      this.categoryThreads = this.postsService
-        .fetchCategoryThreads(this.categoryID)
-        .finally(() => {
-          this.threadsAreLoading = false;
-        });
-    }
   }
 }
