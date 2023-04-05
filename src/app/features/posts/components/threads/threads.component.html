@@ -8,7 +8,7 @@
     </ng-template>
     <p>{{ thread.description }}</p>
     <ng-template pTemplate="footer">
-      <p-button [routerLink]="['posts']">Dive in</p-button>
+      <p-button [routerLink]="['/', 'posts', thread.id]">Dive in</p-button>
     </ng-template>
   </p-panel>
 </div>
