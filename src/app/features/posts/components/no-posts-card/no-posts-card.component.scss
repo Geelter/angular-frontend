@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.p-card {
+  width: 550px;
+}
+
+.p-card-header {
+  text-align: center;
+  padding: 10px;
+}
+
+.p-card .p-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.p-card .p-card-footer {
+  display: flex;
+  justify-content: center;
+}
