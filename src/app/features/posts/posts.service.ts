@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Category, Thread } from '@assets/dummy-data/posts';
+import { Category, Post, Thread } from '@assets/dummy-data/posts';
 import { SupabaseService } from '@core/services/supabase.service';
 import Dictionary from '@shared/dictionary';
 
@@ -10,13 +10,15 @@ export class PostsService {
       this.postCategories = categories;
     });
   }
-  public postCategories: Category[] = [];
+  private postCategories: Category[] = [];
 
-  public categoryThreads = new Dictionary<Thread[]>();
+  private categoryThreads = new Dictionary<Thread[]>();
 
-  async fetchPostCategories(): Promise<Category[]> {
+  private threadPosts = new Dictionary<Post[]>();
+
+  private async fetchPostCategories(): Promise<Category[]> {
     const { data: postCategories, error } = await this.supabase.client
-      .from('post_categories')
+      .from('post_category')
       .select('*');
 
     if (postCategories && !error) {
@@ -26,17 +28,24 @@ export class PostsService {
     }
   }
 
-  getSavedCategories() {
-    return this.postCategories;
-  }
-
-  categoriesCached() {
+  private postCategoriesCached() {
     return !!this.postCategories.length;
   }
 
-  async fetchCategoryThreads(categoryID: string) {
+  getPostCategories(): Promise<Category[]> {
+    if (this.postCategoriesCached()) {
+      return new Promise<Category[]>(resolve => {
+        resolve(this.postCategories);
+      });
+    }
+    return this.fetchPostCategories();
+  }
+
+  private async fetchThreadsForCategoryID(
+    categoryID: string
+  ): Promise<Thread[]> {
     const { data: categoryThreads, error } = await this.supabase.client
-      .from('post_threads')
+      .from('post_thread')
       .select('*')
       .eq('category_id', categoryID);
 
@@ -49,11 +58,44 @@ export class PostsService {
     }
   }
 
-  getSavedCategoryThreads(categoryID: string) {
-    return this.categoryThreads.getItem(categoryID);
+  private threadsCachedForCategoryID(categoryID: string): boolean {
+    return this.categoryThreads.containsKey(categoryID);
   }
 
-  threadsCached(categoryID: string): boolean {
-    return this.categoryThreads.containsKey(categoryID);
+  getThreadsForCategoryID(categoryID: string): Promise<Thread[]> {
+    if (this.threadsCachedForCategoryID(categoryID)) {
+      return new Promise<Thread[]>(resolve => {
+        resolve(this.categoryThreads.getItem(categoryID));
+      });
+    }
+    return this.fetchThreadsForCategoryID(categoryID);
+  }
+
+  private async fetchPostsForThreadID(threadID: string): Promise<Post[]> {
+    const { data: threadPosts, error } = await this.supabase.client
+      .from('post')
+      .select('*')
+      .eq('thread_id', threadID);
+
+    if (threadPosts && !error) {
+      const posts = threadPosts as Post[];
+      this.threadPosts.add(threadID, posts);
+      return posts;
+    } else {
+      throw 'Error fetching posts for specified thread';
+    }
+  }
+
+  private postsCachedForThreadID(threadID: string): boolean {
+    return this.threadPosts.containsKey(threadID);
+  }
+
+  getPostsForThreadID(threadID: string): Promise<Post[]> {
+    if (this.postsCachedForThreadID(threadID)) {
+      return new Promise<Post[]>(resolve => {
+        resolve(this.threadPosts.getItem(threadID));
+      });
+    }
+    return this.fetchPostsForThreadID(threadID);
   }
 }
