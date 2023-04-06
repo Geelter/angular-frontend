@@ -18,17 +18,26 @@ export class PostsComponent implements OnInit {
 
   postsAreLoading: boolean;
 
+  postsArrayIsEmpty: boolean;
+
   ngOnInit() {
     let threadID = '';
 
     this.postsAreLoading = true;
+    this.postsArrayIsEmpty = false;
 
     this.route.paramMap.subscribe((params: ParamMap) => {
       threadID = params.get('thread_id')!;
     });
 
-    this.posts = this.postsService.getPostsForThreadID(threadID).finally(() => {
-      this.postsAreLoading = false;
-    });
+    this.posts = this.postsService
+      .getPostsForThreadID(threadID)
+      .then(posts => {
+        this.postsArrayIsEmpty = !posts.length;
+        return posts;
+      })
+      .finally(() => {
+        this.postsAreLoading = false;
+      });
   }
 }
