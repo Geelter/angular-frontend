@@ -10,6 +10,11 @@ import { MenubarModule } from 'primeng/menubar';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { RippleModule } from 'primeng/ripple';
 import { PanelModule } from 'primeng/panel';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ImageModule } from 'primeng/image';
+import { CardModule } from 'primeng/card';
+import { EditorModule } from 'primeng/editor';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [],
@@ -24,6 +29,11 @@ import { PanelModule } from 'primeng/panel';
     ProgressBarModule,
     RippleModule,
     PanelModule,
+    TieredMenuModule,
+    ImageModule,
+    CardModule,
+    EditorModule,
+    ProgressSpinnerModule,
   ],
   exports: [
     AvatarModule,
@@ -35,6 +45,11 @@ import { PanelModule } from 'primeng/panel';
     ProgressBarModule,
     RippleModule,
     PanelModule,
+    TieredMenuModule,
+    ImageModule,
+    CardModule,
+    EditorModule,
+    ProgressSpinnerModule,
   ],
 })
 export class SharedModule {}
