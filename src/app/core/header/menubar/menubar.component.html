@@ -1,1 +1,16 @@
-<p-menubar [model]="items"></p-menubar>
+<p-menubar [model]="items">
+  <ng-template pTemplate="end">
+    <p-button icon="pi pi-fw" class="mr-2"
+      ><i class="pi pi-fw pi-bell bell" style="margin-left: 0.6em"></i
+    ></p-button>
+    <p-button
+      icon="pi pi-fw pi-arrow-left"
+      (onClick)="sidebarVisible = true"></p-button>
+  </ng-template>
+</p-menubar>
+<!-- Relocate the sidebar to home component later -->
+<p-sidebar [(visible)]="sidebarVisible" position="right">
+  <ng-template pTemplate="header"><h2>Characters</h2></ng-template>
+  <ng-template pTemplate="content">Implement character list here</ng-template>
+  <ng-template pTemplate="footer">Currently online: 4</ng-template>
+</p-sidebar>
