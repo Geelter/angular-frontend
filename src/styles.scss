@@ -41,7 +41,7 @@ app-header {
 
 .content {
   grid-area: content;
-  background-color: brown;
+  background-color: $shade900;
 }
 
 .footer {
@@ -76,7 +76,18 @@ app-header {
 }
 
 .p-panel {
-  margin-bottom: 2em;
+  margin: 1em;
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
+  border-radius: 6px;
+}
+
+.p-card {
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
+  border-radius: 6px;
+}
+
+.p-editor-container {
+  margin: 1em;
 }
 
 a:link,
