@@ -1,8 +1,9 @@
 .banner {
-  //border: 5px solid red;
   height: 200px;
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.8)), url("https://images.unsplash.com/photo-1548850174-70a1cf2c5f09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
-  background-position: center;
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.8)), url("../../../../assets/images/street-night.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 61%;
   cursor: pointer;
 }
 
@@ -11,4 +12,3 @@
   margin-top: auto;
   font-size: 4em;
 }
-
