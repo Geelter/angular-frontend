@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SupabaseAuthService } from '@core/services/supabase-auth.service';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
+  styleUrls: ['../auth-container/auth-container.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
   @ViewChild('loginForm') loginForm: NgForm;
 
   onSubmit() {
@@ -15,13 +16,6 @@ export class LoginFormComponent implements OnInit {
 
       this.supabaseAuth.login(email, password);
     }
-  }
-
-  ngOnInit() {
-    // console.log('getSession return value');
-    // this.supabaseAuth.getSession().then(session => console.log(session));
-    // console.log('Login session print');
-    // console.log(this.supabaseAuth.getSession());
   }
 
   constructor(private supabaseAuth: SupabaseAuthService) {}
