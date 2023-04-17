@@ -29,7 +29,7 @@ $fontSize:1rem !default;
 $fontWeight:normal !default;
 $textColor:$shade000 !default;
 $textSecondaryColor:$shade100 !default;
-$borderRadius:3px !default;
+$borderRadius:6px !default;
 $transitionDuration:.2s !default;
 $formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
 $actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
@@ -337,8 +337,8 @@ $inputSwitchSliderOnHoverBg:$primaryDarkColor !default;
 $inputSwitchHandleOnBg:$shade000 !default;
 
 //panel
-$panelHeaderBorderColor: $shade600 !default;
-$panelHeaderBorder:1px solid $shade600 !default;
+$panelHeaderBorderColor: $primaryColor !default;
+$panelHeaderBorder:1px solid $primaryColor !default;
 $panelHeaderBg:$shade800 !default;
 $panelHeaderTextColor:$shade000 !default;
 $panelHeaderFontWeight:600 !default;
@@ -349,14 +349,14 @@ $panelHeaderHoverBg:$hoverBg !default;
 $panelHeaderHoverBorderColor:$shade600 !default;
 $panelHeaderTextHoverColor:$shade000 !default;
 
-$panelContentBorderColor: $shade600 !default;
-$panelContentBorder:1px solid $shade600 !default;
+$panelContentBorderColor: $primaryColor !default;
+$panelContentBorder:1px solid $primaryColor !default;
 $panelContentBg:$shade800 !default;
 $panelContentEvenRowBg:rgba(255,255,255,0.01) !default;
 $panelContentTextColor:$shade000 !default;
 $panelContentPadding:1rem !default;
 
-$panelFooterBorder:1px solid $shade600 !default;
+$panelFooterBorder:1px solid $primaryColor !default;
 $panelFooterBg:$shade800 !default;
 $panelFooterTextColor:$shade000 !default;
 $panelFooterPadding:0.5rem 1rem !default;
@@ -423,6 +423,7 @@ $scrollPanelTrackBorder:0 none !default;
 $scrollPanelTrackBg:$shade600 !default;
 
 //card
+$cardBorder:1px solid $primaryColor !default;
 $cardBodyPadding:1rem !default;
 $cardTitleFontSize:1.5rem !default;
 $cardTitleFontWeight:700 !default;
