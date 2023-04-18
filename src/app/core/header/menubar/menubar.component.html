@@ -1,4 +1,12 @@
-<p-menubar [model]="items">
+<p-menubar>
+  <ng-template pTemplate="start">
+    <p-button
+      icon="pi pi-bars"
+      label="Menu"
+      styleClass="p-button-outlined"
+      (onClick)="menu.toggle($event)"></p-button>
+    <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+  </ng-template>
   <ng-template pTemplate="end">
     <p-button icon="pi" class="mr-2" styleClass="p-button-outlined"
       ><i class="pi pi-fw pi-bell bell"></i
