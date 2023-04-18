@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 /* Quill styles */
 @import "../node_modules/quill/dist/quill.core.css";
 
@@ -21,13 +25,13 @@
 @import "styles/variables";
 
 body {
+  min-height: 100%;
   color: $text;
 }
 
 .grid-container {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  column-gap: 10px;
   grid-template-areas:
     "header"
     "content"
@@ -105,6 +109,11 @@ app-header {
 
 .p-editor-container {
   margin: 1em;
+}
+
+.p-menuitem-link {
+  //border: 1px solid $primaryColor;
+  margin-right: .4em;
 }
 
 a:link,
