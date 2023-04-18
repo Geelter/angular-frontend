@@ -108,8 +108,9 @@ app-header {
   justify-content: center;
 }
 
-.p-editor-container {
-  margin: 1em;
+.p-editor-container .p-editor-content {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 a:link,
