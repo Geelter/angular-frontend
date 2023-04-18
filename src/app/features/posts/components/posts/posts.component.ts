@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '@posts/posts.service';
 import { Post } from '@assets/dummy-data/posts';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import {
+  PlayerCharacter,
+  SupabaseCharactersService,
+} from '@core/services/supabase-characters.service';
+import Dictionary from '@shared/dictionary';
 
 @Component({
   selector: 'app-posts',
@@ -11,10 +16,13 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class PostsComponent implements OnInit {
   constructor(
     private postsService: PostsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private charactersService: SupabaseCharactersService
   ) {}
 
   posts: Promise<Post[]>;
+
+  playerCharacters = new Dictionary<PlayerCharacter>();
 
   postsAreLoading: boolean;
 
@@ -28,6 +36,10 @@ export class PostsComponent implements OnInit {
 
     this.route.paramMap.subscribe((params: ParamMap) => {
       threadID = params.get('thread_id')!;
+    });
+
+    this.charactersService.getPlayerCharacters().then(characters => {
+      this.playerCharacters = characters;
     });
 
     this.posts = this.postsService
