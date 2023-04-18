@@ -6,6 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./post-editor.component.scss'],
 })
 export class PostEditorComponent {
+  @Input() cardHeader: string;
+
+  @Input() cardContent: string;
+
   editorActive = false;
 
   editorContent = '';

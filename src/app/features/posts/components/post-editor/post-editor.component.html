@@ -1,8 +1,10 @@
 <div>
   <div *ngIf="!editorActive" class="flex justify-content-center">
     <p-card *ngIf="!editorActive">
-      <ng-template pTemplate="header"><h2>Continue this story</h2></ng-template>
-      <p>Placeholder content</p>
+      <ng-template pTemplate="header"
+        ><h2>{{ cardHeader }}</h2></ng-template
+      >
+      <p>{{ cardContent }}</p>
       <ng-template pTemplate="footer"
         ><p-button styleClass="p-button-outlined" (onClick)="toggleEditor()"
           >Create Post</p-button
