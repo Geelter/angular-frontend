@@ -1,0 +1,19 @@
+.creator-grid-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  column-gap: 10px;
+  grid-template-areas:
+    "steps"
+    "current-step";
+  height: 100%;
+}
+
+.creator-steps {
+  grid-area: steps;
+  background-color: saddlebrown;
+}
+
+.creator-current-step {
+  grid-area: current-step;
+  background-color: #1c80cf;
+}

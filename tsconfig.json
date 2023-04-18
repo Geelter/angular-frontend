@@ -7,6 +7,7 @@
       "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
       "@auth/*": ["app/features/auth/*"],
+      "@creator/*": ["app/features/character-creator/*"],
       "@env/*": ["environments/*"],
       "@assets/*": ["assets/*"],
       "@styles/*": ["styles/*"]

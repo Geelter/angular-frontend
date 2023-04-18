@@ -23,13 +23,11 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 200px;
   grid-template-rows: auto 1fr auto;
-  column-gap: 10px;
   grid-template-areas:
-    "header header"
-    "content players"
-    "footer footer";
+    "header"
+    "content"
+    "footer";
   height: 100vh;
 }
 

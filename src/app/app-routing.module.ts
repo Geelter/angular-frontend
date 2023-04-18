@@ -5,19 +5,23 @@ import { AuthGuard } from '@shared/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/auth/login',
-    pathMatch: 'full',
-  },
-  {
     path: 'auth',
     loadChildren: () =>
       import('@auth/auth.module').then(module => module.AuthModule),
   },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
     canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'creator',
+        loadChildren: () =>
+          import('@creator/character-creator.module').then(
+            module => module.CharacterCreatorModule
+          ),
+      },
+    ],
   },
 ];
 
