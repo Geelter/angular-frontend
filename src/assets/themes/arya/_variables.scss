@@ -338,7 +338,7 @@ $inputSwitchHandleOnBg:$shade000 !default;
 
 //panel
 $panelHeaderBorderColor: $primaryColor !default;
-$panelHeaderBorder:1px solid $primaryColor !default;
+$panelHeaderBorder:1px solid $shade600 !default;
 $panelHeaderBg:$shade800 !default;
 $panelHeaderTextColor:$shade000 !default;
 $panelHeaderFontWeight:600 !default;
@@ -350,13 +350,13 @@ $panelHeaderHoverBorderColor:$shade600 !default;
 $panelHeaderTextHoverColor:$shade000 !default;
 
 $panelContentBorderColor: $primaryColor !default;
-$panelContentBorder:1px solid $primaryColor !default;
+$panelContentBorder:1px solid $shade600 !default;
 $panelContentBg:$shade800 !default;
 $panelContentEvenRowBg:rgba(255,255,255,0.01) !default;
 $panelContentTextColor:$shade000 !default;
 $panelContentPadding:1rem !default;
 
-$panelFooterBorder:1px solid $primaryColor !default;
+$panelFooterBorder:1px solid $shade600 !default;
 $panelFooterBg:$shade800 !default;
 $panelFooterTextColor:$shade000 !default;
 $panelFooterPadding:0.5rem 1rem !default;
@@ -643,8 +643,10 @@ $menuBorder:1px solid $shade600 !default;
 $menuTextColor:$shade000 !default;
 $menuitemPadding:.75rem 1rem !default;
 $menuitemBorderRadius:0 !default;
-$menuitemTextColor:$shade000 !default;
-$menuitemIconColor:$shade100 !default;
+//$menuitemTextColor:$shade000 !default;
+//$menuitemIconColor:$shade100 !default;
+$menuitemTextColor:$buttonBg;
+$menuitemIconColor:$primaryColor;
 $menuitemTextHoverColor:$shade000 !default;
 $menuitemIconHoverColor:$shade000 !default;
 $menuitemHoverBg:$hoverBg !default;
@@ -659,7 +661,7 @@ $submenuHeaderTextColor:$shade000 !default;
 $submenuHeaderBorderRadius:0 !default;
 $submenuHeaderFontWeight:600 !default;
 $overlayMenuBg:$menuBg !default;
-$overlayMenuBorder:1px solid $shade600 !default;
+$overlayMenuBorder:1px solid $primaryColor !default;
 $overlayMenuShadow:0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
 $verticalMenuPadding:.25rem 0 !default;
 $verticalMenuitemMargin:0 !default;

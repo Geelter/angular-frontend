@@ -83,6 +83,7 @@ app-header {
   margin: 1em;
   box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
   border-radius: 6px;
+  border: 1px solid $primaryColor;
 }
 
 .p-card {
@@ -109,11 +110,6 @@ app-header {
 
 .p-editor-container {
   margin: 1em;
-}
-
-.p-menuitem-link {
-  //border: 1px solid $primaryColor;
-  margin-right: .4em;
 }
 
 a:link,
