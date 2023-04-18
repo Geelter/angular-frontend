@@ -8,6 +8,7 @@ import { PostsService } from '@posts/posts.service';
 import { PostsContainerComponent } from './components/posts-container/posts-container.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { NoPostsCardComponent } from './components/no-posts-card/no-posts-card.component';
+import { PostEditorComponent } from './components/post-editor/post-editor.component';
 
 @NgModule({
   providers: [PostsService],
@@ -17,6 +18,7 @@ import { NoPostsCardComponent } from './components/no-posts-card/no-posts-card.c
     PostsContainerComponent,
     PostsComponent,
     NoPostsCardComponent,
+    PostEditorComponent,
   ],
   imports: [CommonModule, PostsRoutingModule, SharedModule],
   exports: [CategoriesComponent],
