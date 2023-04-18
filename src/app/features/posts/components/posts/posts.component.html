@@ -9,7 +9,9 @@
   </div>
   <div *ngIf="!postsArrayIsEmpty">
     <p-panel *ngFor="let post of posts | async">
-      <ng-template pTemplate="header"> Character Name </ng-template>
+      <ng-template pTemplate="header">
+        {{ playerCharacters.getItem(post.author_id.toString()).name }}
+      </ng-template>
       <div class="container">
         <p-image
           class="float-image"
