@@ -7,3 +7,10 @@
   float: left;
   margin-right: 1em;
 }
+
+.no-posts-grid {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  height: 60vh;
+}
