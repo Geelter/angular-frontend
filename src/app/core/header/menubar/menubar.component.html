@@ -1,10 +1,11 @@
 <p-menubar [model]="items">
   <ng-template pTemplate="end">
-    <p-button icon="pi pi-fw" class="mr-2"
-      ><i class="pi pi-fw pi-bell bell" style="margin-left: 0.6em"></i
+    <p-button icon="pi" class="mr-2" styleClass="p-button-outlined"
+      ><i class="pi pi-fw pi-bell bell"></i
     ></p-button>
     <p-button
-      icon="pi pi-fw pi-arrow-left"
+      icon="pi pi-arrow-left"
+      styleClass="p-button-outlined"
       (onClick)="sidebarVisible = true"></p-button>
   </ng-template>
 </p-menubar>

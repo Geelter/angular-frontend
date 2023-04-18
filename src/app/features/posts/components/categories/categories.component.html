@@ -8,7 +8,9 @@
     </ng-template>
     <p>{{ category.description }}</p>
     <ng-template pTemplate="footer">
-      <p-button [routerLink]="['/', 'posts', category.id, 'threads']"
+      <p-button
+        [routerLink]="['/', 'posts', category.id, 'threads']"
+        styleClass="p-button-outlined"
         >Explore</p-button
       >
     </ng-template>
