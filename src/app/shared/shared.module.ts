@@ -4,17 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
+import { EditorModule } from 'primeng/editor';
+import { ImageModule } from 'primeng/image';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
-import { ProgressBarModule } from 'primeng/progressbar';
-import { RippleModule } from 'primeng/ripple';
 import { PanelModule } from 'primeng/panel';
-import { TieredMenuModule } from 'primeng/tieredmenu';
-import { ImageModule } from 'primeng/image';
-import { CardModule } from 'primeng/card';
-import { EditorModule } from 'primeng/editor';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { RippleModule } from 'primeng/ripple';
+import { SidebarModule } from 'primeng/sidebar';
+import { StyleClassModule } from 'primeng/styleclass';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 @NgModule({
   declarations: [],
@@ -22,34 +23,36 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     CommonModule,
     AvatarModule,
     ButtonModule,
+    CardModule,
     CheckboxModule,
+    EditorModule,
     FormsModule,
+    ImageModule,
     InputTextModule,
     MenubarModule,
-    ProgressBarModule,
-    RippleModule,
     PanelModule,
-    TieredMenuModule,
-    ImageModule,
-    CardModule,
-    EditorModule,
     ProgressSpinnerModule,
+    RippleModule,
+    SidebarModule,
+    StyleClassModule,
+    TieredMenuModule,
   ],
   exports: [
     AvatarModule,
     ButtonModule,
+    CardModule,
     CheckboxModule,
+    EditorModule,
     FormsModule,
+    ImageModule,
     InputTextModule,
     MenubarModule,
-    ProgressBarModule,
-    RippleModule,
     PanelModule,
-    TieredMenuModule,
-    ImageModule,
-    CardModule,
-    EditorModule,
     ProgressSpinnerModule,
+    RippleModule,
+    SidebarModule,
+    StyleClassModule,
+    TieredMenuModule,
   ],
 })
 export class SharedModule {}

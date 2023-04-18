@@ -11,7 +11,6 @@ import { SharedModule } from '@shared/shared.module';
 // import { StoreModule } from '@ngrx/store';
 
 import { BannerComponent } from './header/banner/banner.component';
-import { CharacterSidebarComponent } from './sidebars/character-sidebar/character-sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { MenubarComponent } from './header/menubar/menubar.component';
 import { HomeComponent } from './home/home.component';
@@ -19,7 +18,6 @@ import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     BannerComponent,
-    CharacterSidebarComponent,
     HeaderComponent,
     MenubarComponent,
     HomeComponent,
@@ -36,7 +34,6 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    CharacterSidebarComponent,
     HeaderComponent,
     HttpClientModule,
   ],
