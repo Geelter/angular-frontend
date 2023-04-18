@@ -18,15 +18,12 @@ export class AppComponent implements OnInit {
   redirectIfLoggedIn() {
     this.supabaseAuth.getSession().then(result => {
       if (result) {
-        const _ = this.router.navigate(['/home']);
+        const _ = this.router.navigate(['/']);
       }
     });
   }
   ngOnInit() {
     this.primengConfig.ripple = true;
-
-    // console.log('Supabase persisted tokens');
-    // console.log(JSON.parse(localStorage.getItem('supabase')!));
 
     this.redirectIfLoggedIn();
   }
