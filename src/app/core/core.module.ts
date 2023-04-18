@@ -6,9 +6,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '@shared/shared.module';
 
-// import { EffectsModule } from '@ngrx/effects';
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from '@core/store/reducers/app.reducer';
 
 import { BannerComponent } from './header/banner/banner.component';
 import { HeaderComponent } from './header/header.component';
@@ -29,6 +30,7 @@ import { HomeComponent } from './home/home.component';
     CommonModule,
     HttpClientModule,
     SharedModule,
+    StoreModule.forRoot(appReducer),
   ],
   exports: [
     AppRoutingModule,
