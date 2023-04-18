@@ -1,0 +1,32 @@
+<div>
+  <div *ngIf="!editorActive" class="flex justify-content-center">
+    <p-card *ngIf="!editorActive">
+      <ng-template pTemplate="header"><h2>Continue this story</h2></ng-template>
+      <p>Placeholder content</p>
+      <ng-template pTemplate="footer"
+        ><p-button
+          styleClass="p-button-outlined"
+          (onClick)="editorActive = !editorActive"
+          >New Post</p-button
+        ></ng-template
+      >
+    </p-card>
+  </div>
+  <div *ngIf="editorActive">
+    <p-editor [(ngModel)]="editorContent" [style]="{ height: '320px' }">
+    </p-editor>
+    <div class="flex ml-3 mr-3">
+      <button
+        pButton
+        pRipple
+        label="Cancel"
+        class="w-full p-button-outlined"
+        (click)="editorActive = !editorActive"></button>
+      <button
+        pButton
+        pRipple
+        label="Submit"
+        class="w-full p-button-outlined"></button>
+    </div>
+  </div>
+</div>
