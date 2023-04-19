@@ -50,5 +50,11 @@ export class SupabaseAuthService {
     return session;
   }
 
+  async getUserID() {
+    const session = await this.getSession();
+
+    return session?.user.id;
+  }
+
   constructor(private supabase: SupabaseService, private router: Router) {}
 }

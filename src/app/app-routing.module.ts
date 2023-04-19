@@ -19,6 +19,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('@posts/posts.module').then(module => module.PostsModule),
       },
+      {
+        path: 'creator',
+        loadChildren: () =>
+          import('@creator/character-creator.module').then(
+            module => module.CharacterCreatorModule
+          ),
+      },
     ],
   },
 ];
