@@ -1,4 +1,5 @@
 @import "src/styles/variables";
+@import "styles/animations";
 
 .grid {
   display: grid;
@@ -28,4 +29,15 @@
   object-position: center;
   grid-column: 2 / 3;
   width: 100%;
+}
+
+img {
+  z-index: 1;
+}
+
+// Animations
+form {
+  animation-duration: .8s;
+  animation-name: slidein;
+  animation-timing-function: ease-out;
 }

@@ -30,6 +30,11 @@ export class NavigationItemsProviderService {
       ],
     },
     {
+      label: 'Posts',
+      icon: 'pi pi-fw pi-book',
+      routerLink: ['/posts', 'categories'],
+    },
+    {
       label: 'Logout',
       icon: 'pi pi-fw pi-power-off',
       command: () => this.supabaseAuth.logout(),

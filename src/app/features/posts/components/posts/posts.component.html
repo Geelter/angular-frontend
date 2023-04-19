@@ -1,0 +1,27 @@
+<div class="progress-spinner" *ngIf="postsAreLoading">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div>
+  <div *ngIf="postsArrayIsEmpty" class="no-posts-grid">
+    <app-post-editor
+      cardHeader="Nothing out here but the wind"
+      cardContent="Seems like you're a trailblazer. Want to leave a mark?"></app-post-editor>
+  </div>
+  <div *ngIf="!postsArrayIsEmpty">
+    <p-panel *ngFor="let post of posts | async">
+      <ng-template pTemplate="header">
+        {{ playerCharacters.getItem(post.author_id.toString()).name }}
+      </ng-template>
+      <div class="container">
+        <p-image
+          class="float-image"
+          src="assets/images/default-avatar.jpg"
+          alt="avatar"></p-image>
+        <p>{{ post.content }}</p>
+      </div>
+    </p-panel>
+    <app-post-editor
+      cardHeader="Continue this story"
+      cardContent="Placeholder content"></app-post-editor>
+  </div>
+</div>
