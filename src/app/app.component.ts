@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { SupabaseAuthService } from '@core/services/supabase-auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,24 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private primengConfig: PrimeNGConfig,
-    private supabaseAuth: SupabaseAuthService,
-    private router: Router
-  ) {}
+  constructor(private primengConfig: PrimeNGConfig) {}
 
   redirectIfLoggedIn() {
     this.supabaseAuth.getSession().then(result => {
       if (result) {
-        const _ = this.router.navigate(['/home']);
+        const _ = this.router.navigate(['/']);
       }
     });
   }
   ngOnInit() {
     this.primengConfig.ripple = true;
-
-    // console.log('Supabase persisted tokens');
-    // console.log(JSON.parse(localStorage.getItem('supabase')!));
 
     this.redirectIfLoggedIn();
   }

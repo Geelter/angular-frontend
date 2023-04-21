@@ -1,5 +1,14 @@
 .banner {
-  border: 5px solid red;
   height: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.8)), url("../../../../assets/images/street-night.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 61%;
+  cursor: pointer;
 }
 
+.banner h1 {
+  height: fit-content;
+  margin-top: auto;
+  font-size: 4em;
+}

@@ -19,7 +19,7 @@ export class SupabaseAuthService {
     });
 
     if (!error && user && session) {
-      await this.router.navigate(['/home']);
+      await this.router.navigate(['/']);
     }
   }
 
@@ -33,7 +33,7 @@ export class SupabaseAuthService {
     });
 
     if (!error && user && session) {
-      await this.router.navigate(['/home']);
+      await this.router.navigate(['/']);
     }
   }
 
@@ -48,6 +48,12 @@ export class SupabaseAuthService {
     } = await this.clientAuth.getSession();
 
     return session;
+  }
+
+  async getUserID() {
+    const session = await this.getSession();
+
+    return session?.user.id;
   }
 
   constructor(private supabase: SupabaseService, private router: Router) {}

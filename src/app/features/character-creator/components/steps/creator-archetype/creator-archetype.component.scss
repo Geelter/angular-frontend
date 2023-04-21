@@ -1,0 +1,12 @@
+@import "app/features/character-creator/components/steps/character-creator-step";
+
+.creator-step-main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.archetype-button {
+  display: inline-flex;
+  margin-bottom: 15px;
+}

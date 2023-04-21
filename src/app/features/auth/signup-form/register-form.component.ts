@@ -5,6 +5,7 @@ import { SupabaseAuthService } from '@core/services/supabase-auth.service';
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
+  styleUrls: ['../auth-container/auth-container.component.scss'],
 })
 export class RegisterFormComponent {
   @ViewChild('registerForm') registerForm: NgForm;

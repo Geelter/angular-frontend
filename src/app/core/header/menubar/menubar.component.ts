@@ -5,10 +5,13 @@ import { NavigationItemsProviderService } from '@core/services/navigation-items-
 @Component({
   selector: 'app-menubar',
   templateUrl: 'menubar.component.html',
+  styleUrls: ['menubar.component.scss'],
 })
 export class MenubarComponent implements OnInit {
   constructor(private navigationItemService: NavigationItemsProviderService) {}
   items: MenuItem[];
+
+  sidebarVisible = false;
 
   ngOnInit() {
     this.items = this.navigationItemService.getNavigationItems();

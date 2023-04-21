@@ -1,0 +1,33 @@
+<div class="creator-step-grid">
+  <div class="creator-step-main">
+    <h2 class="text-center m-2">Available Archetypes</h2>
+    <button
+      class="archetype-button"
+      *ngFor="
+        let archetype of this.creatorService.stepData.archetypes;
+        index as index
+      "
+      pButton
+      pRipple
+      [label]="archetype.name"
+      (click)="chooseArchetype(index)"></button>
+  </div>
+  <app-creator-detail-view
+    class="creator-step-detail"
+    [title]="this.creatorService.chosenArchetype.name"
+    [detailText]="
+      this.creatorService.chosenArchetype.description
+    "></app-creator-detail-view>
+  <div class="creator-step-nav">
+    <p-button
+      label="Cancel"
+      (onClick)="exitCreator()"
+      icon="pi pi-angle-left"
+      iconPos="left"></p-button>
+    <p-button
+      label="Next"
+      (onClick)="nextStep()"
+      icon="pi pi-angle-right"
+      iconPos="right"></p-button>
+  </div>
+</div>
