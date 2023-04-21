@@ -1,12 +1,24 @@
+@import "assets/themes/arya/arya-blue/variables";
+
 .creator-step-grid {
   display: grid;
   grid-template-columns: 0.55fr 1fr;
   grid-template-rows: 1fr auto;
-  column-gap: 10px;
+  column-gap: 1em;
   grid-template-areas:
     "main detail"
     "nav nav";
   height: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.grid-area-card {
+  padding: 1em;
+  background-color: $shade800;
+  border: 1px solid $primaryColor;
+  border-radius: $borderRadius;
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
 }
 
 .creator-step-main {
