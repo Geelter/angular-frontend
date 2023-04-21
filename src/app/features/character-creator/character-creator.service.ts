@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { SupabaseService } from '@core/services/supabase.service';
 import { SupabaseAuthService } from '@core/services/supabase-auth.service';
-import { StepData } from '@creator/models/step-data';
-import { dummyStepData } from '@assets/dummy-data/dummyStepData';
 import { characterCreatorSteps } from '@creator/character-creator-steps';
+import { Archetype } from '@creator/models/archetype';
+import { Attribute } from '@creator/models/attribute';
+import { AttributesConfig } from '@creator/models/attributes-config';
+import Dictionary from '@shared/dictionary';
 
 @Injectable()
 export class CharacterCreatorService {
@@ -14,13 +16,17 @@ export class CharacterCreatorService {
     this.fetchStepData();
     this.fetchStepRoutes();
   }
-  chosenArchetypeIndex = 0;
+  chosenArchetypeID = 0;
 
   characterName = '';
 
   stepRoutes: string[][];
 
-  stepData: StepData;
+  private characterArchetypes = new Dictionary<Archetype>();
+
+  private attributesConfig: AttributesConfig;
+
+  private characterAttributes: Attribute[] = [];
 
   get characterDataComplete() {
     return !!this.chosenArchetype && !!this.characterName;
