@@ -29,11 +29,6 @@ body {
 
 @import "styles/variables";
 
-body {
-  min-height: 100%;
-  color: $text;
-}
-
 .grid-container {
   display: grid;
   grid-template-rows: auto 1fr auto;
