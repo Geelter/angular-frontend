@@ -6,6 +6,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
+import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
 import { ImageModule } from 'primeng/image';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -27,6 +28,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
     ButtonModule,
     CardModule,
     CheckboxModule,
+    DividerModule,
     EditorModule,
     FormsModule,
     ImageModule,
@@ -46,6 +48,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
     ButtonModule,
     CardModule,
     CheckboxModule,
+    DividerModule,
     EditorModule,
     FormsModule,
     ImageModule,
