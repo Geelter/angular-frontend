@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,11 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(
+    private primengConfig: PrimeNGConfig,
+    private supabaseAuth: SupabaseAuthService,
+    private router: Router
+  ) {}
 
   redirectIfLoggedIn() {
     this.supabaseAuth.getSession().then(result => {
@@ -19,6 +25,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.primengConfig.ripple = true;
 
-    this.redirectIfLoggedIn();
+    // this.redirectIfLoggedIn();
   }
 }
