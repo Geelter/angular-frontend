@@ -9,6 +9,11 @@ html {
   height: 100%;
 }
 
+body {
+  min-height: 100%;
+  //color: $text;
+}
+
 /* Quill styles */
 @import "../node_modules/quill/dist/quill.core.css";
 
@@ -111,6 +116,18 @@ app-header {
 .p-editor-container .p-editor-content {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.p-steps {
+  padding: 1em;
+  border: 1px solid $primaryColor;
+  border-radius: $borderRadius;
+  background-color: $shade800;
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
+}
+
+.p-steps .p-steps-item.p-highlight .p-steps-number {
+  background: $primaryColor;
 }
 
 a:link,
