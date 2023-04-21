@@ -10,7 +10,8 @@ $colors: (
     "bluegray": #607D8B,
     "purple": #9C27B0,
     "red": #FF4032,
-    "primary": $primaryColor
+    "primary": $primaryColor,
+    "accent": $accentColor,
 ) !default;
 
 //shades
@@ -27,7 +28,7 @@ $hoverBg:rgba(255,255,255,.03) !default;
 $fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $fontSize:1rem !default;
 $fontWeight:normal !default;
-$textColor:$shade000 !default;
+$textColor:$primaryTextColor !default;
 $textSecondaryColor:$shade100 !default;
 $borderRadius:6px !default;
 $transitionDuration:.2s !default;
