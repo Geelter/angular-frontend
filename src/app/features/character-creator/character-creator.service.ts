@@ -42,24 +42,6 @@ export class CharacterCreatorService {
 
   attributeSumCorrect = true;
 
-  get attributesSum(): number {
-    let attributesSum = 0;
-    const attributes = this.stepData.attributes;
-
-    for (const passive of attributes.passive) {
-      attributesSum -= passive.value;
-    }
-
-    for (const active of attributes.active) {
-      attributesSum -= active.value;
-    }
-
-    this.attributeSumCorrect =
-      attributesSum === this.stepData.attributeConfig.sumValue;
-
-    return attributesSum;
-  }
-
   fetchStepRoutes() {
     this.stepRoutes = characterCreatorSteps;
   }
