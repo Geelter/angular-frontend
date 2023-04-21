@@ -75,6 +75,33 @@ export class CharacterCreatorService {
     return this.fetchCharacterArchetypes();
   }
 
+  private async fetchAttributesConfig(): Promise<AttributesConfig> {
+    const { data: character_creator_config, error } = await this.supabase.client
+      .from('character_creator_config')
+      .select('*');
+
+    if (character_creator_config && !error) {
+      const config = character_creator_config[0] as AttributesConfig;
+      this.attributesConfig = config;
+      return config;
+    } else {
+      throw 'Error fetching attributes config';
+    }
+  }
+
+  private attributesConfigCached() {
+    return !!this.attributesConfig;
+  }
+
+  getAttributesConfig(): Promise<AttributesConfig> {
+    if (this.attributesConfigCached()) {
+      return new Promise<AttributesConfig>(resolve => {
+        resolve(this.attributesConfig);
+      });
+    }
+    return this.fetchAttributesConfig();
+  }
+
   getRoutesForStep(number: number): string[][] {
     return [this.stepRoutes[number - 1], this.stepRoutes[number + 1]];
   }
