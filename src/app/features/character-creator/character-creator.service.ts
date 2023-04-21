@@ -62,6 +62,10 @@ export class CharacterCreatorService {
     }
   }
 
+  private characterArchetypesCached() {
+    return !!this.characterArchetypes.size();
+  }
+
   getRoutesForStep(number: number): string[][] {
     return [this.stepRoutes[number - 1], this.stepRoutes[number + 1]];
   }
