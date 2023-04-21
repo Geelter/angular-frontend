@@ -15,6 +15,10 @@ export class CharacterCreatorService {
   ) {
     this.fetchStepData();
     this.fetchStepRoutes();
+
+    this.fetchCharacterArchetypes();
+    this.fetchAttributesConfig();
+    this.fetchAttributes();
   }
   chosenArchetypeID = 0;
 
