@@ -66,6 +66,15 @@ export class CharacterCreatorService {
     return !!this.characterArchetypes.size();
   }
 
+  getCharacterArchetypes(): Promise<Dictionary<Archetype>> {
+    if (this.characterArchetypesCached()) {
+      return new Promise<Dictionary<Archetype>>(resolve => {
+        resolve(this.characterArchetypes);
+      });
+    }
+    return this.fetchCharacterArchetypes();
+  }
+
   getRoutesForStep(number: number): string[][] {
     return [this.stepRoutes[number - 1], this.stepRoutes[number + 1]];
   }
