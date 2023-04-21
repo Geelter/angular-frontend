@@ -23,16 +23,16 @@
 
 .creator-step-main {
   grid-area: main;
-  background-color: #3f51b5;
 }
 
 .creator-step-detail {
   grid-area: detail;
-  background-color: #9c27b0;
 }
 
 .creator-step-nav {
   display: flex;
   justify-content: space-between;
   grid-area: nav;
+  margin-top: 1em;
+  margin-bottom: 2em;
 }
