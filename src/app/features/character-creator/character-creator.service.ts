@@ -46,6 +46,22 @@ export class CharacterCreatorService {
     this.stepRoutes = characterCreatorSteps;
   }
 
+  private async fetchCharacterArchetypes(): Promise<Dictionary<Archetype>> {
+    const { data: characterArchetypes, error } = await this.supabase.client
+      .from('character_archetype')
+      .select('*');
+
+    if (characterArchetypes && !error) {
+      const archetypes = characterArchetypes as Archetype[];
+      for (const archetype of archetypes) {
+        this.characterArchetypes.add(archetype.id.toString(), archetype);
+      }
+      return this.characterArchetypes;
+    } else {
+      throw 'Error fetching character archetypes';
+    }
+  }
+
   getRoutesForStep(number: number): string[][] {
     return [this.stepRoutes[number - 1], this.stepRoutes[number + 1]];
   }
