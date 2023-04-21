@@ -13,7 +13,6 @@ export class CharacterCreatorService {
     private supabase: SupabaseService,
     private supabaseAuth: SupabaseAuthService
   ) {
-    this.fetchStepData();
     this.fetchStepRoutes();
 
     this.fetchCharacterArchetypes();
@@ -37,14 +36,8 @@ export class CharacterCreatorService {
   }
 
   get chosenArchetype() {
-    return this.stepData?.archetypes[this.chosenArchetypeIndex];
+    return this.characterArchetypes.getItem(this.chosenArchetypeID.toString());
   }
-
-  fetchStepData() {
-    this.stepData = dummyStepData;
-  }
-
-  attributeSumCorrect = true;
 
   fetchStepRoutes() {
     this.stepRoutes = characterCreatorSteps;
