@@ -1,16 +1,15 @@
 <div class="creator-step-grid">
   <div class="creator-step-main grid-area-card">
     <h2 class="text-center m-2">Available Archetypes</h2>
-    <button
-      class="archetype-button"
-      *ngFor="
-        let archetype of this.creatorService.stepData.archetypes;
-        index as index
-      "
-      pButton
-      pRipple
-      [label]="archetype.name"
-      (click)="chooseArchetype(index)"></button>
+    <div class="flex flex-wrap">
+      <button
+        class="archetype-button p-button-outlined"
+        *ngFor="let archetype of characterArchetypesArray | async"
+        pButton
+        pRipple
+        [label]="archetype.name"
+        (click)="chooseArchetype(archetype)"></button>
+    </div>
   </div>
   <app-creator-detail-view
     class="creator-step-detail grid-area-card"
