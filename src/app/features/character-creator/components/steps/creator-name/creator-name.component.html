@@ -1,5 +1,5 @@
 <div class="creator-step-grid">
-  <div class="creator-step-main">
+  <div class="creator-step-main grid-area-card p-6">
     <span class="p-float-label">
       <input
         id="character-name"
@@ -10,16 +10,19 @@
       <label for="character-name">Character Name</label>
     </span>
   </div>
-  <div class="creator-step-nav w-full">
+  <div class="creator-step-nav grid-area-card w-full">
     <p-button
       label="Previous"
       (onClick)="previousStep()"
       icon="pi pi-angle-left"
-      iconPos="left"></p-button>
+      iconPos="left"
+      styleClass="p-button-outlined"></p-button>
     <p-button
       label="Submit"
       (onClick)="submitCharacter()"
       icon="pi pi-angle-right"
-      iconPos="right"></p-button>
+      iconPos="right"
+      styleClass="p-button-outlined"
+      [disabled]="!characterName || characterName.length < 6"></p-button>
   </div>
 </div>
