@@ -622,11 +622,11 @@ $tooltipPadding:$inputPadding !default;
 //steps
 $stepsItemBg:transparent !default;
 $stepsItemBorder:0 none !default;
-$stepsItemTextColor:$shade100 !default;
+$stepsItemTextColor:$textColor !default;
 $stepsItemNumberWidth:2rem !default;
 $stepsItemNumberHeight:2rem !default;
 $stepsItemNumberFontSize:1.143rem !default;
-$stepsItemNumberColor:$shade000 !default;
+$stepsItemNumberColor:$textColor !default;
 $stepsItemNumberBorderRadius:50% !default;
 $stepsItemActiveFontWeight:600 !default;
 

@@ -44,7 +44,8 @@
 
         &:before {
             content:' ';
-            border-top: $divider;
+            //border-top: $divider;
+            border-top: 1px solid $primaryColor;
             width: 100%;
             top: 50%;
             left: 0;
