@@ -102,6 +102,38 @@ export class CharacterCreatorService {
     return this.fetchAttributesConfig();
   }
 
+  private async fetchAttributes(): Promise<Attribute[]> {
+    const attributesConfig: AttributesConfig = await this.getAttributesConfig();
+
+    const { data: characterAttributes, error } = await this.supabase.client
+      .from('character_attribute')
+      .select('*');
+
+    if (characterAttributes && !error) {
+      const attributes = characterAttributes as Attribute[];
+      for (const attribute of attributes) {
+        attribute.value = attributesConfig.attribute_initial_value;
+      }
+      this.characterAttributes = attributes;
+      return attributes;
+    } else {
+      throw 'Error fetching character attributes';
+    }
+  }
+
+  private attributesCached() {
+    return !!this.characterAttributes.length;
+  }
+
+  getAttributes(): Promise<Attribute[]> {
+    if (this.attributesCached()) {
+      return new Promise<Attribute[]>(resolve => {
+        resolve(this.characterAttributes);
+      });
+    }
+    return this.fetchAttributes();
+  }
+
   getRoutesForStep(number: number): string[][] {
     return [this.stepRoutes[number - 1], this.stepRoutes[number + 1]];
   }
