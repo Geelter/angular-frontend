@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '@posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Thread } from '@assets/dummy-data/posts';
+import { Thread } from '../../models/thread';
 
 @Component({
   selector: 'app-threads',
