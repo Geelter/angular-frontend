@@ -18,16 +18,6 @@ export class StepDataGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    if (this.creatorService.stepData) {
-      return true;
-    } else {
-      this.creatorService.fetchStepData();
-    }
-
-    if (!this.creatorService.stepData) {
-      return this.router.parseUrl('/');
-    }
-
     return true;
   }
 }

@@ -1,4 +1,6 @@
 .creator-grid-container {
+  margin: 1em;
+  padding-bottom: 1em;
   display: grid;
   grid-template-rows: auto 1fr;
   column-gap: 10px;
@@ -10,10 +12,8 @@
 
 .creator-steps {
   grid-area: steps;
-  background-color: saddlebrown;
 }
 
 .creator-current-step {
   grid-area: current-step;
-  background-color: #1c80cf;
 }

@@ -1,6 +1,5 @@
-export interface Attribute {
+export interface Category {
   id: number;
   name: string;
   description: string;
-  value: number;
 }

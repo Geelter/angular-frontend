@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PostsService } from '@posts/posts.service';
 import { OnInit } from '@angular/core';
-import { Category } from '@assets/dummy-data/posts';
+import { Category } from '../../models/category';
 
 @Component({
   selector: 'app-categories',
