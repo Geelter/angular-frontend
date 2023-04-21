@@ -24,6 +24,26 @@ export class CreatorAttributesComponent implements OnInit {
 
   private nextStepRoute: string[];
 
+  attributesConfig: Promise<AttributesConfig>;
+
+  characterAttributes: Promise<Attribute[]>;
+
+  chosenAttribute: Attribute | null = null;
+
+  sumAttributes(attributes: Attribute[]): number {
+    let attributesSum = 0;
+    attributes.forEach(attribute => (attributesSum -= attribute.value));
+    console.log(attributesSum);
+    return attributesSum;
+  }
+
+  attributesSumIsCorrect(
+    attributes: Attribute[],
+    config: AttributesConfig
+  ): boolean {
+    return this.sumAttributes(attributes) == config.attribute_points;
+  }
+
   previousStep() {
     this.router.navigate(this.previousStepRoute);
   }
