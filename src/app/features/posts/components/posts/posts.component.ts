@@ -22,7 +22,7 @@ export class PostsComponent implements OnInit {
 
   posts: Promise<Post[]>;
 
-  playerCharacters = new Dictionary<PlayerCharacter>();
+  playerCharacters: Promise<Dictionary<PlayerCharacter>>;
 
   postsAreLoading: boolean;
 
@@ -38,9 +38,7 @@ export class PostsComponent implements OnInit {
       threadID = params.get('thread_id')!;
     });
 
-    this.charactersService.getPlayerCharacters().then(characters => {
-      this.playerCharacters = characters;
-    });
+    this.playerCharacters = this.charactersService.getPlayerCharacters();
 
     this.posts = this.postsService
       .getPostsForThreadID(threadID)
