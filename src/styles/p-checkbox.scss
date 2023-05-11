@@ -1,0 +1,40 @@
+@import "variables";
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+  border-color: $accent;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+  box-shadow: 0 0 0 1px $accent;
+  border-color: $accent;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-icon {
+  background-color: $accent;
+  border: 0;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-icon:hover {
+  background-color: $secondary;
+  border: 0;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  border-color: $accent;
+  background-color: $accent;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
+  border-color: $secondary;
+  background-color: $secondary;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-icon {
+  background-color: $accent;
+  border: 0;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-icon:hover {
+  background-color: $secondary;
+  border: 0;
+}

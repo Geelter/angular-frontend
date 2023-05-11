@@ -7,7 +7,11 @@
       "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
       "@auth/*": ["app/features/auth/*"],
-      "@assets/*": ["assets/*"]
+      "@posts/*": ["app/features/posts/*"],
+      "@creator/*": ["app/features/character-creator/*"],
+      "@env/*": ["environments/*"],
+      "@assets/*": ["assets/*"],
+      "@styles/*": ["styles/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -29,7 +33,10 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

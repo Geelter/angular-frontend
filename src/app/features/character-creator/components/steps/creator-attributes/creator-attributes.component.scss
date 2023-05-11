@@ -1,0 +1,15 @@
+@import "app/features/character-creator/components/steps/character-creator-step";
+
+.attribute-container {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .2em;
+}
+
+.attribute-input-container {
+  display: flex;
+  align-content: center;
+  gap: 1em;
+}

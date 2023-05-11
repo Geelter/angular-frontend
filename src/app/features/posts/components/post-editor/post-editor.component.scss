@@ -1,0 +1,21 @@
+@import "assets/themes/arya/arya-blue/variables";
+
+.editor-container {
+  border: 1px solid $primaryColor;
+  border-radius: $borderRadius;
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
+  background-color: $shade800;
+}
+
+.p-button {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.left-button {
+  border-bottom-right-radius: 0;
+}
+
+.right-button {
+  border-bottom-left-radius: 0;
+}

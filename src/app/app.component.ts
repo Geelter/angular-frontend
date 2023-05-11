@@ -1,37 +1,30 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { Store } from '@ngrx/store';
-import * as fromApp from './store/app.reducer';
-import * as AuthActions from '@auth/store/auth.actions';
-import { Subscription } from 'rxjs';
+import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   constructor(
     private primengConfig: PrimeNGConfig,
-    private store: Store<fromApp.AppState>
+    private supabaseAuth: SupabaseAuthService,
+    private router: Router
   ) {}
 
-  storeSubscription: Subscription;
-  isAuthorized: boolean;
-
+  redirectIfLoggedIn() {
+    this.supabaseAuth.getSession().then(result => {
+      if (result) {
+        const _ = this.router.navigate(['/']);
+      }
+    });
+  }
   ngOnInit() {
     this.primengConfig.ripple = true;
-    this.store.dispatch(AuthActions.autoLogin());
-    this.storeSubscription = this.store
-      .select('auth')
-      .subscribe((authState) => {
-        this.isAuthorized = !!authState.token;
-      });
-  }
 
-  ngOnDestroy() {
-    if (this.storeSubscription) {
-      this.storeSubscription.unsubscribe();
-    }
+    // this.redirectIfLoggedIn();
   }
 }

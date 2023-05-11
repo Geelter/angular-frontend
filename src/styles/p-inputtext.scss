@@ -1,0 +1,10 @@
+@import "variables";
+
+.p-inputtext:enabled:hover {
+  border: 1px solid $accent;
+}
+
+.p-inputtext:enabled:focus {
+  border: 1px solid $accent;
+  box-shadow: 0 0 0 1px $accent;
+}

@@ -1,1 +1,25 @@
-<p-menubar [model]="items"></p-menubar>
+<p-menubar>
+  <ng-template pTemplate="start">
+    <p-button
+      icon="pi pi-bars"
+      label="Menu"
+      styleClass="p-button-outlined"
+      (onClick)="menu.toggle($event)"></p-button>
+    <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <p-button icon="pi" class="mr-2" styleClass="p-button-outlined"
+      ><i class="pi pi-fw pi-bell bell"></i
+    ></p-button>
+    <p-button
+      icon="pi pi-arrow-left"
+      styleClass="p-button-outlined"
+      (onClick)="sidebarVisible = true"></p-button>
+  </ng-template>
+</p-menubar>
+<!-- Relocate the sidebar to home component later -->
+<p-sidebar [(visible)]="sidebarVisible" position="right">
+  <ng-template pTemplate="header"><h2>Characters</h2></ng-template>
+  <ng-template pTemplate="content">Implement character list here</ng-template>
+  <ng-template pTemplate="footer">Currently online: 4</ng-template>
+</p-sidebar>

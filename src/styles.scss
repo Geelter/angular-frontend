@@ -5,25 +5,37 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  //color: $text;
+}
+
+/* Quill styles */
+@import "../node_modules/quill/dist/quill.core.css";
+
 /* PrimeNG */
 @import "../node_modules/primeicons/primeicons.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
 
 /* PrimeFlex */
-@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeflex/primeflex";
 
 /* PrimeNG themes */
-@import "assets/themes/arya-blue/theme.css";
+@import "assets/themes/arya/arya-blue/theme.scss";
+
+@import "styles/variables";
 
 .grid-container {
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
   grid-template-rows: auto 1fr auto;
-  column-gap: 10px;
   grid-template-areas:
-    "header header header"
-    "character content players"
-    "footer footer footer";
+    "header"
+    "content"
+    "footer";
   height: 100vh;
 }
 
@@ -31,23 +43,91 @@ app-header {
   grid-area: header;
 }
 
-.player-character {
-  grid-area: character;
-  background-color: green;
-}
-
 .content {
   grid-area: content;
-  background-color: brown;
-}
-
-.active-players {
-  grid-area: players;
-  background-color: blue;
+  background-color: $shade900;
 }
 
 .footer {
   grid-area: footer;
   background-color: orangered;
   padding: 15px 30px;
+}
+
+.progress-spinner {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: visible;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.progress-spinner:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.53);
+}
+
+.p-panel {
+  margin: 1em;
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
+  border-radius: $borderRadius;
+  border: 1px solid $primaryColor;
+}
+
+.p-card {
+  width: 550px;
+  margin: 1em;
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
+  border-radius: $borderRadius;
+}
+
+.p-card-header {
+  text-align: center;
+  padding: 10px;
+}
+
+.p-card .p-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.p-card .p-card-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.p-editor-container .p-editor-content {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.p-steps {
+  padding: 1em;
+  border: 1px solid $primaryColor;
+  border-radius: $borderRadius;
+  background-color: $shade800;
+  box-shadow: 0 0 .4rem 0.08rem $primaryDarkColor;
+}
+
+.p-steps .p-steps-item.p-highlight .p-steps-number {
+  background: $primaryColor;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: $accent;
 }

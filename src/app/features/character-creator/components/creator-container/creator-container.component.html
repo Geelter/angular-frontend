@@ -1,0 +1,9 @@
+<div class="creator-grid-container">
+  <p-steps [model]="steps" class="creator-steps"></p-steps>
+  <div class="creator-current-step">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<div class="progress-spinner" *ngIf="!creatorDataFetchComplete">
+  <p-progressSpinner></p-progressSpinner>
+</div>

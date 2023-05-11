@@ -1,0 +1,50 @@
+<div class="creator-step-grid">
+  <ng-container *ngIf="attributesConfig | async as resolvedConfig">
+    <ng-container *ngIf="characterAttributes | async as resolvedAttributes">
+      <div class="creator-step-main grid-area-card">
+        <div
+          *ngFor="let attribute of resolvedAttributes"
+          class="attribute-container">
+          <p>{{ attribute.name }}</p>
+          <div class="attribute-input-container">
+            <p-inputNumber
+              [(ngModel)]="attribute.value"
+              attributeInput
+              [attributesConfig]="resolvedConfig"></p-inputNumber>
+            <p-button
+              class="align-self-center"
+              icon="pi pi-question"
+              styleClass="p-button-rounded p-button-text p-button-sm"
+              (onClick)="chosenAttribute = attribute"></p-button>
+          </div>
+        </div>
+      </div>
+      <div class="creator-step-detail grid-area-card">
+        <h2>Available points: {{ sumAttributes(resolvedAttributes) }}</h2>
+        <p-divider></p-divider>
+        <app-creator-detail-view
+          [title]="chosenAttribute?.name ?? 'Choose an attribute to inspect'"
+          [detailText]="
+            chosenAttribute?.description ?? ''
+          "></app-creator-detail-view>
+      </div>
+      <div class="creator-step-nav grid-area-card">
+        <p-button
+          label="Previous"
+          (onClick)="previousStep()"
+          icon="pi pi-angle-left"
+          iconPos="left"
+          styleClass="p-button-outlined"></p-button>
+        <p-button
+          label="Next"
+          (onClick)="nextStep()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          styleClass="p-button-outlined"
+          [disabled]="
+            !attributesSumIsCorrect(resolvedAttributes, resolvedConfig)
+          "></p-button>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

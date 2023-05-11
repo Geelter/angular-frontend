@@ -1,0 +1,33 @@
+<div class="creator-step-grid">
+  <div class="creator-step-main grid-area-card">
+    <h2 class="text-center m-2">Available Archetypes</h2>
+    <div class="flex flex-wrap">
+      <button
+        class="archetype-button p-button-outlined"
+        *ngFor="let archetype of characterArchetypesArray | async"
+        pButton
+        pRipple
+        [label]="archetype.name"
+        (click)="chooseArchetype(archetype)"></button>
+    </div>
+  </div>
+  <app-creator-detail-view
+    class="creator-step-detail grid-area-card"
+    [title]="chosenArchetype?.name ?? 'Choose an archetype'"
+    [detailText]="chosenArchetype?.description ?? ''"></app-creator-detail-view>
+  <div class="creator-step-nav grid-area-card">
+    <p-button
+      label="Cancel"
+      (onClick)="exitCreator()"
+      icon="pi pi-angle-left"
+      iconPos="left"
+      styleClass="p-button-outlined"></p-button>
+    <p-button
+      label="Next"
+      (onClick)="nextStep()"
+      icon="pi pi-angle-right"
+      iconPos="right"
+      styleClass="p-button-outlined"
+      [disabled]="!chosenArchetype"></p-button>
+  </div>
+</div>
