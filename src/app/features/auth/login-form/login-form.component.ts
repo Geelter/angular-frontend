@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { NavigationService } from '@core/services/navigation.service';
 
 @Component({
   selector: 'app-login-form',
@@ -10,13 +11,25 @@ import { SupabaseAuthService } from '@core/services/supabase-auth.service';
 export class LoginFormComponent {
   @ViewChild('loginForm') loginForm: NgForm;
 
-  onSubmit() {
+  isSubmitting = false;
+
+  async onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
+      this.isSubmitting = true;
 
-      this.supabaseAuth.login(email, password);
+      const data = await this.supabaseAuth.login(email, password);
+
+      if (data) {
+        await this.navigationService.navigateToRoot();
+      }
+
+      this.isSubmitting = false;
     }
   }
 
-  constructor(private supabaseAuth: SupabaseAuthService) {}
+  constructor(
+    private supabaseAuth: SupabaseAuthService,
+    private navigationService: NavigationService
+  ) {}
 }

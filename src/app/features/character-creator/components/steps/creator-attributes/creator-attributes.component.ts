@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CharacterCreatorService } from '@creator/character-creator.service';
-import { AttributesConfig } from '@creator/models/attributes-config';
-import { Attribute } from '@creator/models/attribute';
+import { AttributesConfigModel } from '@creator/models/attributes-config.model';
+import { AttributeModel } from '@creator/models/attribute.model';
 
 @Component({
   selector: 'app-creator-attributes',
@@ -24,13 +24,13 @@ export class CreatorAttributesComponent implements OnInit {
 
   private nextStepRoute: string[];
 
-  attributesConfig: Promise<AttributesConfig>;
+  attributesConfig: Promise<AttributesConfigModel>;
 
-  characterAttributes: Promise<Attribute[]>;
+  characterAttributes: Promise<AttributeModel[]>;
 
-  chosenAttribute: Attribute | null = null;
+  chosenAttribute: AttributeModel | null = null;
 
-  sumAttributes(attributes: Attribute[]): number {
+  sumAttributes(attributes: AttributeModel[]): number {
     let attributesSum = 0;
     attributes.forEach(attribute => (attributesSum -= attribute.value));
     console.log(attributesSum);
@@ -38,8 +38,8 @@ export class CreatorAttributesComponent implements OnInit {
   }
 
   attributesSumIsCorrect(
-    attributes: Attribute[],
-    config: AttributesConfig
+    attributes: AttributeModel[],
+    config: AttributesConfigModel
   ): boolean {
     return this.sumAttributes(attributes) == config.attribute_points;
   }

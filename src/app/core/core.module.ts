@@ -16,6 +16,9 @@ import { HeaderComponent } from './header/header.component';
 import { MenubarComponent } from './header/menubar/menubar.component';
 import { HomeComponent } from './home/home.component';
 
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+
 @NgModule({
   declarations: [
     BannerComponent,
@@ -23,6 +26,7 @@ import { HomeComponent } from './home/home.component';
     MenubarComponent,
     HomeComponent,
   ],
+  providers: [MessageService],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -31,6 +35,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot(appReducer),
+    ToastModule,
   ],
   exports: [
     AppRoutingModule,
@@ -38,6 +43,7 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     HeaderComponent,
     HttpClientModule,
+    ToastModule,
   ],
 })
 export class CoreModule {}

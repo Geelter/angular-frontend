@@ -8,6 +8,11 @@ const options = {
     persistSession: true,
     autoRefreshToken: true,
   },
+  realtime: {
+    params: {
+      eventsPerSecond: 10,
+    },
+  },
 };
 
 @Injectable({

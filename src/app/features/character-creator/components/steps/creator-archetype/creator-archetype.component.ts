@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CharacterCreatorService } from '@creator/character-creator.service';
-import { Archetype } from '@creator/models/archetype';
+import { ArchetypeModel } from '@creator/models/archetype.model';
 
 @Component({
   selector: 'app-creator-archetype',
@@ -24,9 +24,9 @@ export class CreatorArchetypeComponent implements OnInit {
 
   private nextStepRoute: string[];
 
-  characterArchetypesArray: Promise<Archetype[]>;
+  characterArchetypesArray: Promise<ArchetypeModel[]>;
 
-  chosenArchetype: Archetype | null = null;
+  chosenArchetype: ArchetypeModel | null = null;
 
   nextStep() {
     this.router.navigate(this.nextStepRoute);
@@ -36,7 +36,7 @@ export class CreatorArchetypeComponent implements OnInit {
     this.router.navigate(this.exitRoute);
   }
 
-  chooseArchetype(archetype: Archetype) {
+  chooseArchetype(archetype: ArchetypeModel) {
     this.creatorService.chosenArchetypeID = archetype.id;
     this.chosenArchetype = archetype;
   }

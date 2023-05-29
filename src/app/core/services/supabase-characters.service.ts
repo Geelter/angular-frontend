@@ -1,37 +1,50 @@
 import { Injectable } from '@angular/core';
 import { SupabaseService } from '@core/services/supabase.service';
 import Dictionary from '@shared/dictionary';
-
-export interface PlayerCharacter {
-  id: number;
-  name: string;
-  user_id: string;
-  character_avatar_url: string;
-}
+import { PlayerCharacter } from '@creator/models/player-character.model';
+import { MsgService } from '@core/services/msg.service';
+import * as supabaseConstants from '@assets/supabase-constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SupabaseCharactersService {
-  constructor(private supabase: SupabaseService) {
-    const _ = this.fetchPlayerCharacters();
+  constructor(
+    private supabase: SupabaseService,
+    private messageService: MsgService
+  ) {
+    // const _ = this.fetchPlayerCharacters();
   }
 
   private playerCharacters = new Dictionary<PlayerCharacter>();
 
   private async fetchPlayerCharacters(): Promise<Dictionary<PlayerCharacter>> {
-    const { data: playerCharacters, error } = await this.supabase.client
-      .from('player_character')
-      .select('*');
+    try {
+      const { data: playerCharacters, error } = await this.supabase.client
+        .from(supabaseConstants.PLAYER_CHARACTER_TABLE)
+        .select('*');
 
-    if (playerCharacters && !error) {
-      for (const character of playerCharacters as PlayerCharacter[]) {
-        this.playerCharacters.add(character.id.toString(), character);
+      if (error) {
+        this.messageService.showError(
+          'Error fetching player characters',
+          error.message
+        );
+        throw new Error('Error fetching player characters');
       }
-      console.table(this.playerCharacters);
+
+      if (playerCharacters) {
+        for (const character of playerCharacters as PlayerCharacter[]) {
+          this.playerCharacters.add(character.id.toString(), character);
+        }
+        console.table(this.playerCharacters);
+      }
       return this.playerCharacters;
-    } else {
-      throw 'Error fetching player characters';
+    } catch (error) {
+      console.error(
+        'Exception occurred while fetching player characters',
+        error
+      );
+      throw error;
     }
   }
 

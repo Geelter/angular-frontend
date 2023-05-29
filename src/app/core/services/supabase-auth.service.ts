@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SupabaseService } from '@core/services/supabase.service';
-import { Router } from '@angular/router';
+import { MsgService } from '@core/services/msg.service';
+import { AuthError } from '@supabase/supabase-js';
 
 @Injectable({
   providedIn: 'root',
@@ -9,52 +10,59 @@ export class SupabaseAuthService {
   get clientAuth() {
     return this.supabase.client.auth;
   }
-  async login(email: string, password: string) {
-    const {
-      data: { user, session },
-      error,
-    } = await this.clientAuth.signInWithPassword({
-      email: email,
-      password: password,
-    });
 
-    if (!error && user && session) {
-      await this.router.navigate(['/']);
+  async login(email: string, password: string) {
+    const { data, error } = await this.clientAuth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      this.messageService.showError('Login failed', error.message);
+      return;
     }
+    this.messageService.showSuccess('Login successful');
+    return data;
   }
 
   async register(email: string, password: string) {
-    const {
-      data: { user, session },
-      error,
-    } = await this.clientAuth.signUp({
-      email: email,
-      password: password,
-    });
+    const { data, error } = await this.clientAuth.signUp({ email, password });
+    if (error) {
+      this.messageService.showError('Registration failed', error.message);
+      return;
+    }
+    this.messageService.showSuccess('Registration successful');
+    return data;
+  }
 
-    if (!error && user && session) {
-      await this.router.navigate(['/']);
+  async logout() {
+    try {
+      await this.clientAuth.signOut();
+      this.messageService.showSuccess('Logout successful');
+      return true;
+    } catch (error) {
+      if (error instanceof AuthError) {
+        this.messageService.showError('Logout failed', error.message);
+      }
+
+      this.messageService.showError('Unexpected error', 'Try again');
+
+      return false;
     }
   }
 
-  logout() {
-    this.clientAuth.signOut().catch(console.error);
-    const _ = this.router.navigate(['/auth', 'login']);
-  }
-
   async getSession() {
-    const {
-      data: { session },
-    } = await this.clientAuth.getSession();
-
-    return session;
+    const { data } = await this.clientAuth.getSession();
+    return data?.session;
   }
 
-  async getUserID() {
+  async getCurrentUserID() {
     const session = await this.getSession();
 
     return session?.user.id;
   }
 
-  constructor(private supabase: SupabaseService, private router: Router) {}
+  constructor(
+    private supabase: SupabaseService,
+    private messageService: MsgService
+  ) {}
 }

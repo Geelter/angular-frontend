@@ -1,11 +1,8 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromPlayerCharacters from './player-characters.reducer';
-
-export interface AppState {
-  playerCharacters: fromPlayerCharacters.PlayerCharactersState;
-}
+import { AppState } from '@core/store/state/app.state';
+import { playerCharactersReducer } from './player-characters.reducer';
 
 export const appReducer: ActionReducerMap<AppState> = {
-  playerCharacters: fromPlayerCharacters.playerCharactersReducer,
+  playerCharacters: playerCharactersReducer,
 };

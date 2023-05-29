@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '@posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Thread } from '../../models/thread';
+import { NavigationService } from '@core/services/navigation.service';
 
 @Component({
   selector: 'app-threads',
@@ -11,6 +12,7 @@ import { Thread } from '../../models/thread';
 export class ThreadsComponent implements OnInit {
   constructor(
     public postsService: PostsService,
+    private navigationService: NavigationService,
     private route: ActivatedRoute
   ) {}
 
@@ -27,10 +29,22 @@ export class ThreadsComponent implements OnInit {
       this.categoryID = params.get('category_id')!;
     });
 
+    this.getCategoryThreads();
+  }
+
+  getCategoryThreads() {
     this.categoryThreads = this.postsService
       .getThreadsForCategoryID(this.categoryID)
       .finally(() => {
         this.threadsAreLoading = false;
       });
+  }
+
+  onReject() {
+    this.navigationService.navigateToRoot();
+  }
+
+  onConfirm() {
+    this.getCategoryThreads();
   }
 }
