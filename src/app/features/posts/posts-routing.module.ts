@@ -5,7 +5,6 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { ThreadsComponent } from '@posts/components/threads/threads.component';
 import { PostsContainerComponent } from '@posts/components/posts-container/posts-container.component';
 import { PostsComponent } from '@posts/components/posts/posts.component';
-import { canActivateCategories } from '@shared/guards/categories.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +14,6 @@ const routes: Routes = [
       {
         path: 'categories',
         component: CategoriesComponent,
-        canActivate: [canActivateCategories],
       },
       {
         path: ':category_id/threads',

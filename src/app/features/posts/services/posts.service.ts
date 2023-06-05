@@ -4,9 +4,7 @@ import { Post } from '@posts/models/post';
 import { MsgService } from '@core/services/msg.service';
 import * as supabaseConstants from '@assets/supabase-constants';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class PostsService {
   constructor(
     private supabase: SupabaseService,
