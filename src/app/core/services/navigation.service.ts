@@ -13,5 +13,9 @@ export class NavigationService {
     await this.router.navigate(['/auth', 'login']);
   }
 
+  async navigateBack() {
+    await this.router.navigate(['..']);
+  }
+
   constructor(private router: Router) {}
 }
