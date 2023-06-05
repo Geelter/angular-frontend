@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SupabaseService } from '@core/services/supabase.service';
+import { SupabaseService } from '@core/services/supabase/supabase.service';
 import { RealtimeChannel } from '@supabase/supabase-js';
 
 @Injectable({

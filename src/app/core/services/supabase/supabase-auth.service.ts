@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SupabaseService } from '@core/services/supabase.service';
+import { SupabaseService } from '@core/services/supabase/supabase.service';
 import { MsgService } from '@core/services/msg.service';
 import { AuthError } from '@supabase/supabase-js';
 
@@ -60,6 +60,9 @@ export class SupabaseAuthService {
 
     return session?.user.id;
   }
+
+  // Implement this to fetch the associated character on signup/signin
+  // async getAssociatedPlayerCharacter(userID: string | undefined) {}
 
   constructor(
     private supabase: SupabaseService,

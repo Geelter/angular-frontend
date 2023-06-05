@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SupabaseService } from '@core/services/supabase.service';
+import { SupabaseService } from '@core/services/supabase/supabase.service';
 import Dictionary from '@shared/dictionary';
 import { PlayerCharacter } from '@creator/models/player-character.model';
 import { MsgService } from '@core/services/msg.service';
