@@ -1,0 +1,33 @@
+<p-toast
+  position="center"
+  key="handleError"
+  [preventOpenDuplicates]="true"
+  (onClose)="navigateBack()"
+  [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+    <div class="flex flex-column" style="flex: 1">
+      <div class="text-center mb-6">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{ message.summary }}</h4>
+      </div>
+      <div class="grid p-fluid">
+        <div class="col-6">
+          <button
+            type="button"
+            pButton
+            (click)="repeatFailedAction()"
+            label="Retry"
+            class="p-button-success"></button>
+        </div>
+        <div class="col-6">
+          <button
+            type="button"
+            pButton
+            (click)="navigateBack()"
+            label="Cancel"
+            class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
