@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { SupabaseAuthService } from '@core/services/supabase/supabase-auth.service';
 import { NavigationService } from '@core/services/navigation.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { SupabaseAuthService } from '@core/services/supabase/supabase-auth.service';
 import { NavigationService } from '@core/services/navigation.service';
 
 @Component({

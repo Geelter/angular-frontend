@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { SupabaseService } from '@core/services/supabase.service';
-import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { SupabaseService } from '@core/services/supabase/supabase.service';
+import { SupabaseAuthService } from '@core/services/supabase/supabase-auth.service';
 import { characterCreatorSteps } from '@creator/character-creator-steps';
 import { ArchetypeModel } from '@creator/models/archetype.model';
 import { AttributeModel } from '@creator/models/attribute.model';

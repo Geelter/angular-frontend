@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { SupabaseRealtimeService } from '@core/services/supabase-realtime.service';
+import { SupabaseRealtimeService } from '@core/services/supabase/supabase-realtime.service';
 
 @Component({
   selector: 'app-home',
