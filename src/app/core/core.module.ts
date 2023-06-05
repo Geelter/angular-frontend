@@ -10,6 +10,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from '@core/store/reducers/app.reducer';
+import * as postCategoriesEffects from '@core/store/effects/posts/post-categories.effects';
+import * as postThreadsEffects from '@core/store/effects/posts/post-threads.effects';
+import * as postsEffects from '@core/store/effects/posts/posts.effects';
 
 import { BannerComponent } from './header/banner/banner.component';
 import { HeaderComponent } from './header/header.component';
@@ -35,6 +38,11 @@ import { ToastModule } from 'primeng/toast';
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot(
+      postCategoriesEffects,
+      postThreadsEffects,
+      postsEffects
+    ),
     ToastModule,
   ],
   exports: [
