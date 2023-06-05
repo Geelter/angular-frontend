@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '@posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Thread } from '../../models/thread';
 import { NavigationService } from '@core/services/navigation.service';
+import { Observable, take } from 'rxjs';
+import { Store } from '@ngrx/store';
+import {
+  selectPostThreadsFetchDate,
+  selectPostThreadsIsLoading,
+  selectThreadsByCategory,
+} from '@core/store/selectors/posts/post-threads.selectors';
+import { fetchThreadsForCategory } from '@core/store/actions/posts/post-threads.actions';
 
 @Component({
   selector: 'app-threads',
@@ -11,40 +18,37 @@ import { NavigationService } from '@core/services/navigation.service';
 })
 export class ThreadsComponent implements OnInit {
   constructor(
-    public postsService: PostsService,
+    private store: Store,
     private navigationService: NavigationService,
     private route: ActivatedRoute
   ) {}
 
-  categoryID: string;
+  categoryID: number;
 
-  categoryThreads: Promise<Thread[]>;
+  threads$: Observable<Thread[]>;
 
-  threadsAreLoading: boolean;
+  threadsAreLoading$: Observable<boolean>;
+
+  threadsFetchDate$: Observable<Map<number, Date>>;
 
   ngOnInit() {
-    this.threadsAreLoading = true;
-
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.categoryID = params.get('category_id')!;
+      this.categoryID = +params.get('category_id')!;
     });
 
-    this.getCategoryThreads();
-  }
+    this.threads$ = this.store.select(selectThreadsByCategory(this.categoryID));
+    this.threadsAreLoading$ = this.store.select(selectPostThreadsIsLoading);
+    this.threadsFetchDate$ = this.store.select(selectPostThreadsFetchDate);
 
-  getCategoryThreads() {
-    this.categoryThreads = this.postsService
-      .getThreadsForCategoryID(this.categoryID)
-      .finally(() => {
-        this.threadsAreLoading = false;
-      });
-  }
-
-  onReject() {
-    this.navigationService.navigateToRoot();
-  }
-
-  onConfirm() {
-    this.getCategoryThreads();
+    this.threadsFetchDate$.pipe(take(1)).subscribe(dates => {
+      if (
+        !dates.has(this.categoryID) ||
+        dates.get(this.categoryID)! < new Date()
+      ) {
+        this.store.dispatch(
+          fetchThreadsForCategory({ categoryID: this.categoryID })
+        );
+      }
+    });
   }
 }

@@ -1,41 +1,8 @@
-<div class="progress-spinner" *ngIf="threadsAreLoading">
+<div class="progress-spinner" *ngIf="threadsAreLoading$ | async; else content">
   <p-progressSpinner></p-progressSpinner>
 </div>
-<p-toast
-  position="bottom-center"
-  key="thread"
-  (onClose)="onReject()"
-  [baseZIndex]="5000">
-  <ng-template let-message pTemplate="message">
-    <div class="flex flex-column" style="flex: 1">
-      <div class="text-center">
-        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
-        <h4>{{ message.summary }}</h4>
-        <p>{{ message.detail }}</p>
-      </div>
-      <div class="grid p-fluid">
-        <div class="col-6">
-          <button
-            type="button"
-            pButton
-            (click)="onConfirm()"
-            label="Yes"
-            class="p-button-success"></button>
-        </div>
-        <div class="col-6">
-          <button
-            type="button"
-            pButton
-            (click)="onReject()"
-            label="No"
-            class="p-button-secondary"></button>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-</p-toast>
-<div>
-  <p-panel [toggleable]="true" *ngFor="let thread of categoryThreads | async">
+<ng-template #content>
+  <p-panel [toggleable]="true" *ngFor="let thread of threads$ | async">
     <ng-template pTemplate="header">
       <span class="font-semibold text-xl">{{ thread.name }}</span>
     </ng-template>
@@ -48,4 +15,4 @@
       >
     </ng-template>
   </p-panel>
-</div>
+</ng-template>
