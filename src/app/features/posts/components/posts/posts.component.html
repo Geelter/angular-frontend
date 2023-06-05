@@ -1,15 +1,15 @@
-<div class="progress-spinner" *ngIf="postsAreLoading">
+<div class="progress-spinner" *ngIf="postsAreLoading$ | async; else content">
   <p-progressSpinner></p-progressSpinner>
 </div>
-<div>
-  <ng-container *ngIf="posts | async as resolvedPosts">
+<ng-template #content>
+  <ng-container *ngIf="posts$ | async as resolvedPosts">
     <ng-container *ngIf="playerCharacters | async as resolvedCharacters">
-      <div *ngIf="postsArrayIsEmpty" class="no-posts-grid">
+      <div *ngIf="!resolvedPosts.length" class="no-posts-grid">
         <app-post-editor
           cardHeader="Nothing out here but the wind"
           cardContent="Seems like you're a trailblazer. Want to leave a mark?"></app-post-editor>
       </div>
-      <div *ngIf="!postsArrayIsEmpty">
+      <div *ngIf="resolvedPosts.length">
         <p-panel *ngFor="let post of resolvedPosts">
           <ng-template pTemplate="header">
             {{ resolvedCharacters.getItem(post.author_id.toString()).name }}
@@ -28,4 +28,4 @@
       </div>
     </ng-container>
   </ng-container>
-</div>
+</ng-template>

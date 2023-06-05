@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '@posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import {
-  PlayerCharacter,
-  SupabaseCharactersService,
-} from '@core/services/supabase-characters.service';
+import { SupabaseCharactersService } from '@core/services/supabase/supabase-characters.service';
 import { Post } from '../../models/post';
 import Dictionary from '@shared/dictionary';
+import { PlayerCharacter } from '@creator/models/player-character.model';
+import { Store } from '@ngrx/store';
+import { Observable, take } from 'rxjs';
+import {
+  selectPostsByThread,
+  selectPostsFetchDate,
+  selectPostsIsLoading,
+} from '@core/store/selectors/posts/posts.selectors';
+import { fetchPostsForThread } from '@core/store/actions/posts/posts.actions';
 
 @Component({
   selector: 'app-posts',
@@ -15,39 +20,36 @@ import Dictionary from '@shared/dictionary';
 })
 export class PostsComponent implements OnInit {
   constructor(
-    private postsService: PostsService,
+    private store: Store,
     private route: ActivatedRoute,
     private charactersService: SupabaseCharactersService
   ) {}
 
-  posts: Promise<Post[]>;
+  threadID: number;
+
+  posts$: Observable<Post[]>;
+
+  postsAreLoading$: Observable<boolean>;
+
+  postsFetchDate$: Observable<Map<number, Date>>;
 
   playerCharacters: Promise<Dictionary<PlayerCharacter>>;
 
-  postsAreLoading: boolean;
-
-  postsArrayIsEmpty: boolean;
-
   ngOnInit() {
-    let threadID = '';
-
-    this.postsAreLoading = true;
-    this.postsArrayIsEmpty = false;
-
     this.route.paramMap.subscribe((params: ParamMap) => {
-      threadID = params.get('thread_id')!;
+      this.threadID = +params.get('thread_id')!;
     });
+
+    this.posts$ = this.store.select(selectPostsByThread(this.threadID));
+    this.postsAreLoading$ = this.store.select(selectPostsIsLoading);
+    this.postsFetchDate$ = this.store.select(selectPostsFetchDate);
 
     this.playerCharacters = this.charactersService.getPlayerCharacters();
 
-    this.posts = this.postsService
-      .getPostsForThreadID(threadID)
-      .then(posts => {
-        this.postsArrayIsEmpty = !posts.length;
-        return posts;
-      })
-      .finally(() => {
-        this.postsAreLoading = false;
-      });
+    this.postsFetchDate$.pipe(take(1)).subscribe(dates => {
+      if (!dates.has(this.threadID) || dates.get(this.threadID)! < new Date()) {
+        this.store.dispatch(fetchPostsForThread({ threadID: this.threadID }));
+      }
+    });
   }
 }
