@@ -32,4 +32,8 @@ export class MsgService {
       sticky: true,
     });
   }
+
+  clearMessages(key: string) {
+    this.messageService.clear(key);
+  }
 }
