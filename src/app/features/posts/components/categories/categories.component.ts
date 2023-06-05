@@ -9,8 +9,6 @@ import {
 } from '@core/store/selectors/posts/post-categories.selectors';
 import { fetchCategories } from '@core/store/actions/posts/post-categories.actions';
 import { Observable, take } from 'rxjs';
-import { selectError } from '@core/store/selectors/global.selectors';
-import { MsgService } from '@core/services/msg.service';
 
 @Component({
   selector: 'app-categories',
@@ -18,7 +16,7 @@ import { MsgService } from '@core/services/msg.service';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  constructor(private store: Store, private messageService: MsgService) {}
+  constructor(private store: Store) {}
   categories$: Observable<Category[]>;
 
   categoriesAreLoading$: Observable<boolean>;
@@ -38,16 +36,6 @@ export class CategoriesComponent implements OnInit {
     this.categoriesFetchDate$.pipe(take(1)).subscribe(date => {
       if (!date || date < new Date()) {
         this.store.dispatch(fetchCategories());
-      }
-    });
-
-    this.store.select(selectError).subscribe(error => {
-      if (error) {
-        this.messageService.showErrorConfirm(
-          error.name,
-          error.message,
-          'handleError'
-        );
       }
     });
   }
