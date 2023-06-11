@@ -12,3 +12,17 @@ export const updateFetchDateForKey = (
 
   return mapCopy;
 };
+
+declare global {
+  interface Date {
+    addMilliseconds(milliseconds: number): Date;
+  }
+}
+
+Date.prototype.addMilliseconds = function (milliseconds): Date {
+  if (!milliseconds) return this;
+  const date = this;
+  date.setDate(date.getDate() + milliseconds);
+
+  return date;
+};

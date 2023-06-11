@@ -1,17 +1,32 @@
 import { createAction, props } from '@ngrx/store';
 import { Post } from '@posts/models/post';
 
-export const fetchPostsForThread = createAction(
-  '[Posts] Fetch Posts For Thread',
+export const chooseThread = createAction(
+  '[Posts] Choose Thread',
   props<{ threadID: number }>()
 );
 
-export const upsertPosts = createAction(
-  '[Posts] Upsert Posts',
-  props<{ posts: Post[] }>()
+export const requestPostIDsForThread = createAction(
+  '[Posts] Request Post IDs For Thread',
+  props<{ threadID: number }>()
 );
 
-export const clearPostsForThread = createAction(
-  '[Posts] Clear Posts For Thread',
-  props<{ threadID: number }>()
+export const receivePostIDsForThread = createAction(
+  '[Posts] Receive Post IDs For Thread',
+  props<{ postIDs: number[]; postCount: number; threadID: number }>()
+);
+
+export const requestPostsForIDs = createAction(
+  '[Posts] Request Posts For IDs',
+  props<{ postIDs: number[]; threadID: number }>()
+);
+
+export const receivePostsForIDs = createAction(
+  '[Posts] Receive Posts For IDs',
+  props<{ posts: Post[]; threadID: number }>()
+);
+
+export const changeCurrentPage = createAction(
+  '[Posts] Change Current Page',
+  props<{ pageNumber: number; threadID: number }>()
 );
