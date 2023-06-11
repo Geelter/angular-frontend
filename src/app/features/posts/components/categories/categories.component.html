@@ -1,20 +1,33 @@
-<div
-  class="progress-spinner"
-  *ngIf="categoriesAreLoading$ | async; else content">
-  <p-progressSpinner></p-progressSpinner>
+<div class="page-wrapper">
+  <p-progressSpinner
+    class="progress-spinner"
+    *ngIf="categoriesAreLoading$ | async; else content"></p-progressSpinner>
+
+  <ng-template #content>
+    <div class="page-content">
+      <p-panel
+        [toggleable]="true"
+        *ngFor="let category of categoriesForCurrentPage$ | async">
+        <ng-template pTemplate="header">
+          <span class="font-semibold text-xl">{{ category.name }}</span>
+        </ng-template>
+        <p>{{ category.description }}</p>
+        <ng-template pTemplate="footer">
+          <p-button
+            [routerLink]="['/', 'posts', category.id, 'threads']"
+            styleClass="p-button-outlined"
+            >Explore</p-button
+          >
+        </ng-template>
+      </p-panel>
+    </div>
+
+    <p-paginator
+      *ngIf="categoriesPaginationState$ | async as resolvedPaginationState"
+      [totalRecords]="resolvedPaginationState.totalEntries"
+      [rows]="resolvedPaginationState.pageSize"
+      [first]="getPaginatorFirst(resolvedPaginationState)"
+      (onPageChange)="onPageChange($event)">
+    </p-paginator>
+  </ng-template>
 </div>
-<ng-template #content>
-  <p-panel [toggleable]="true" *ngFor="let category of categories$ | async">
-    <ng-template pTemplate="header">
-      <span class="font-semibold text-xl">{{ category.name }}</span>
-    </ng-template>
-    <p>{{ category.description }}</p>
-    <ng-template pTemplate="footer">
-      <p-button
-        [routerLink]="['/', 'posts', category.id, 'threads']"
-        styleClass="p-button-outlined"
-        >Explore</p-button
-      >
-    </ng-template>
-  </p-panel>
-</ng-template>
