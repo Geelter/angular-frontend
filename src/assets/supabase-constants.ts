@@ -8,4 +8,4 @@ export const POST_TABLE = 'post';
 
 export const DEFAULT_DATA_LIFESPAN = 300000;
 
-export const DEFAULT_PAGE_SIZE = 20;
+export const DEFAULT_PAGE_SIZE = 8;

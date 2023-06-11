@@ -8,12 +8,8 @@ import { PostsContainerComponent } from './components/posts-container/posts-cont
 import { PostsComponent } from './components/posts/posts.component';
 import { PostEditorComponent } from './components/post-editor/post-editor.component';
 import { ErrorAlertComponent } from '@posts/components/error-alert/error-alert.component';
-import { PostCategoriesService } from '@posts/services/post-categories.service';
-import { PostThreadsService } from '@posts/services/post-threads.service';
-import { PostsService } from '@posts/services/posts.service';
 
 @NgModule({
-  providers: [PostCategoriesService, PostThreadsService, PostsService],
   declarations: [
     CategoriesComponent,
     ThreadsComponent,

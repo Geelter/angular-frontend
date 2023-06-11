@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
+import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RippleModule } from 'primeng/ripple';
@@ -40,6 +41,7 @@ import { ToastModule } from 'primeng/toast';
     MenubarModule,
     MessageModule,
     MessagesModule,
+    PaginatorModule,
     PanelModule,
     ProgressSpinnerModule,
     RippleModule,
@@ -63,6 +65,7 @@ import { ToastModule } from 'primeng/toast';
     MenubarModule,
     MessageModule,
     MessagesModule,
+    PaginatorModule,
     PanelModule,
     ProgressSpinnerModule,
     RippleModule,

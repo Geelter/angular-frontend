@@ -43,6 +43,7 @@ import { ToastModule } from 'primeng/toast';
       postThreadsEffects,
       postsEffects
     ),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ToastModule,
   ],
   exports: [
