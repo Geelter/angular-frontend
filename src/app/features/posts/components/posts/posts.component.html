@@ -1,31 +1,51 @@
-<div class="progress-spinner" *ngIf="postsAreLoading">
-  <p-progressSpinner></p-progressSpinner>
-</div>
-<div>
-  <ng-container *ngIf="posts | async as resolvedPosts">
-    <ng-container *ngIf="playerCharacters | async as resolvedCharacters">
-      <div *ngIf="postsArrayIsEmpty" class="no-posts-grid">
-        <app-post-editor
-          cardHeader="Nothing out here but the wind"
-          cardContent="Seems like you're a trailblazer. Want to leave a mark?"></app-post-editor>
-      </div>
-      <div *ngIf="!postsArrayIsEmpty">
-        <p-panel *ngFor="let post of resolvedPosts">
-          <ng-template pTemplate="header">
-            {{ resolvedCharacters.getItem(post.author_id.toString()).name }}
+<div class="page-wrapper">
+  <p-progressSpinner
+    class="progress-spinner"
+    *ngIf="postsAreLoading$ | async; else content"></p-progressSpinner>
+
+  <ng-template #content>
+    <div class="page-content">
+      <ng-container *ngIf="postsForCurrentPage$ | async as resolvedPosts">
+        <ng-container *ngIf="playerCharacters | async as resolvedCharacters">
+          <ng-container
+            *ngTemplateOutlet="
+              resolvedPosts.length ? posts : editor
+            "></ng-container>
+
+          <ng-template #posts>
+            <p-panel *ngFor="let post of resolvedPosts">
+              <ng-template pTemplate="header">
+                {{ resolvedCharacters.getItem(post.author_id.toString()).name }}
+              </ng-template>
+              <div class="container">
+                <p-image
+                  class="float-image"
+                  src="assets/images/default-avatar.jpg"
+                  alt="avatar"></p-image>
+                <p>{{ post.content }}</p>
+              </div>
+            </p-panel>
+            <app-post-editor
+              cardHeader="Continue this story"
+              cardContent="Don't let the others get ahead."></app-post-editor>
           </ng-template>
-          <div class="container">
-            <p-image
-              class="float-image"
-              src="assets/images/default-avatar.jpg"
-              alt="avatar"></p-image>
-            <p>{{ post.content }}</p>
-          </div>
-        </p-panel>
-        <app-post-editor
-          cardHeader="Continue this story"
-          cardContent="Placeholder content"></app-post-editor>
-      </div>
-    </ng-container>
-  </ng-container>
+
+          <ng-template #editor>
+            <app-post-editor
+              class="no-posts-grid"
+              cardHeader="Nothing out here but the wind"
+              cardContent="Seems like you're a trailblazer. Want to leave a mark?"></app-post-editor>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <p-paginator
+      *ngIf="postsPaginationState$ | async as resolvedPaginationState"
+      [totalRecords]="resolvedPaginationState.totalEntries"
+      [rows]="resolvedPaginationState.pageSize"
+      [first]="getPaginatorFirst(resolvedPaginationState)"
+      (onPageChange)="onPageChange($event)">
+    </p-paginator>
+  </ng-template>
 </div>

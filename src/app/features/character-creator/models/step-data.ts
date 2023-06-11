@@ -1,8 +1,8 @@
-import { Archetype } from '@creator/models/archetype';
-import { Attribute } from '@creator/models/attribute';
+import { ArchetypeModel } from '@creator/models/archetype.model';
+import { AttributeModel } from '@creator/models/attribute.model';
 
 export interface StepData {
-  archetypes: Archetype[];
+  archetypes: ArchetypeModel[];
   attributeConfig: {
     maximumValue: number;
     minimumValue: number;
@@ -10,7 +10,7 @@ export interface StepData {
     initialValue: number;
   };
   attributes: {
-    passive: Attribute[];
-    active: Attribute[];
+    passive: AttributeModel[];
+    active: AttributeModel[];
   };
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { SupabaseAuthService } from '@core/services/supabase/supabase-auth.service';
 import { Router } from '@angular/router';
 
 @Component({

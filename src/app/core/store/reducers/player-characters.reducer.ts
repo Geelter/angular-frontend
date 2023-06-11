@@ -1,22 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
-import { saveCharacters } from '@core/store/actions/player-characters.actions';
-import Dictionary from '@shared/dictionary';
-import { PlayerCharacter } from '@core/services/supabase-characters.service';
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { PlayerCharacter } from '@creator/models/player-character.model';
+import { PlayerCharactersState } from '@core/store/state/player-characters.state';
+import * as playerCharactersActions from '../actions/player-characters.actions';
 
-export interface PlayerCharactersState {
-  playerCharacters: Dictionary<PlayerCharacter>;
-}
+export const adapter: EntityAdapter<PlayerCharacter> =
+  createEntityAdapter<PlayerCharacter>({
+    sortComparer: false,
+  });
 
-export const initialState: PlayerCharactersState = {
-  playerCharacters: new Dictionary<PlayerCharacter>(),
-};
+export const initialState: PlayerCharactersState = adapter.getInitialState({
+  currentUserCharacterID: null,
+  chosenCharacterID: null,
+});
 
-export const playerCharactersReducer = createReducer(
-  initialState,
-  on(
-    saveCharacters,
-    (state, saveCharacters): PlayerCharactersState => ({
-      playerCharacters: saveCharacters._p.playerCharacters,
-    })
-  )
-);
+export const playerCharactersReducer = createReducer(initialState);
