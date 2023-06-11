@@ -14,8 +14,6 @@ export const initialThreadPostsState: ThreadPostsState = {
 
   postIDs: null,
 
-  expiryDate: null,
-
   pagination: {
     pageSize: DEFAULT_PAGE_SIZE,
 
