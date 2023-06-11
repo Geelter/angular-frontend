@@ -1,8 +1,13 @@
 import { Category } from '@posts/models/category';
 import { EntityState } from '@ngrx/entity';
+import { EntityPaginationState } from '@core/store/state/pagination.state';
 
-export interface PostCategoriesState extends EntityState<Category> {
-  lastFetchedAt: Date | null;
+export interface PostCategoriesState {
+  categories: EntityState<Category>;
+
+  categoryIDs: number[] | null;
 
   isLoading: boolean;
+
+  pagination: EntityPaginationState;
 }
