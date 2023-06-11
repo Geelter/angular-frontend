@@ -1,47 +1,113 @@
-import { createReducer, on } from '@ngrx/store';
+import { combineReducers, createReducer, on } from '@ngrx/store';
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Thread } from '@posts/models/thread';
-import { PostThreadsState } from '@core/store/state/posts/post-threads.state';
+import { CategoryThreadsState } from '@core/store/state/posts/post-threads.state';
 import * as postThreadsActions from '@core/store/actions/posts/post-threads.actions';
-import { updateFetchDateForKey } from '@core/store/helper-functions';
+import { DEFAULT_PAGE_SIZE } from '@assets/supabase-constants';
 
 export const adapter: EntityAdapter<Thread> = createEntityAdapter<Thread>({
-  sortComparer: false,
+  sortComparer: (a, b) => a.id - b.id,
 });
 
-export const initialState: PostThreadsState = adapter.getInitialState({
-  lastFetchedAt: new Map<number, Date>(),
-  isLoading: false,
-  chosenCategory: -1,
-});
+export const initialCategoryThreadsState: CategoryThreadsState = {
+  threads: adapter.getInitialState(),
 
-const threadsToRemove = (categoryID: number) => (thread: Thread) => {
-  return thread.category_id === categoryID;
+  threadIDs: null,
+
+  expiryDate: null,
+
+  pagination: {
+    pageSize: DEFAULT_PAGE_SIZE,
+
+    totalEntries: 1,
+
+    currentPage: 1,
+  },
 };
 
-export const postThreadsReducer = createReducer(
-  initialState,
-  on(postThreadsActions.fetchThreadsForCategory, (state, { categoryID }) => {
-    return {
-      ...state,
-      isLoading: true,
-      chosenCategory: categoryID,
-    };
-  }),
-  on(postThreadsActions.upsertThreads, (state, { threads }) => {
-    const updatedDates = updateFetchDateForKey(
-      state.lastFetchedAt,
-      state.chosenCategory
-    );
-
-    return adapter.upsertMany(threads, {
-      ...state,
-      lastFetchedAt: updatedDates,
-      isLoading: false,
-      chosenCategory: -1,
-    });
-  }),
-  on(postThreadsActions.clearThreadsForCategory, (state, { categoryID }) => {
-    return adapter.removeMany(threadsToRemove(categoryID), state);
-  })
+const isLoadingReducer = createReducer(
+  false,
+  on(
+    postThreadsActions.requestThreadIDsForCategory,
+    postThreadsActions.requestThreadsForIDs,
+    () => true
+  ),
+  on(
+    postThreadsActions.receiveThreadIDsForCategory,
+    postThreadsActions.receiveThreadsForIDs,
+    () => false
+  )
 );
+
+const chosenCategoryReducer = createReducer(
+  -1,
+  on(postThreadsActions.chooseCategory, (_, { categoryID }) => categoryID)
+);
+
+const categoryThreadsByIDReducer = createReducer(
+  {} as Record<number, CategoryThreadsState>,
+  on(
+    postThreadsActions.receiveThreadIDsForCategory,
+    (state, { threadIDs, threadCount, categoryID }) => {
+      const newState = { ...state };
+
+      if (!newState[categoryID]) {
+        newState[categoryID] = { ...initialCategoryThreadsState };
+      }
+
+      newState[categoryID] = {
+        ...newState[categoryID],
+        threadIDs: threadIDs,
+        pagination: {
+          ...newState[categoryID].pagination,
+          totalEntries: threadCount,
+        },
+      };
+
+      return newState;
+    }
+  ),
+  on(
+    postThreadsActions.receiveThreadsForIDs,
+    (state, { threads, categoryID }) => {
+      const newState = { ...state };
+
+      if (!newState[categoryID]) {
+        newState[categoryID] = { ...initialCategoryThreadsState };
+      }
+
+      newState[categoryID] = {
+        ...newState[categoryID],
+        threads: adapter.upsertMany(threads, newState[categoryID].threads),
+      };
+
+      return newState;
+    }
+  ),
+  on(
+    postThreadsActions.changeCurrentPage,
+    (state, { pageNumber, categoryID }) => {
+      const newState = { ...state };
+
+      if (!newState[categoryID]) {
+        newState[categoryID] = { ...initialCategoryThreadsState };
+      }
+
+      newState[categoryID] = {
+        ...newState[categoryID],
+        pagination: {
+          ...newState[categoryID].pagination,
+          currentPage: pageNumber,
+        },
+      };
+
+      return newState;
+    }
+  )
+);
+
+export const postThreadsReducer = combineReducers({
+  isLoading: isLoadingReducer,
+  chosenCategory: chosenCategoryReducer,
+  categoryThreads: categoryThreadsByIDReducer,
+});

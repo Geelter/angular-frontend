@@ -1,47 +1,109 @@
-import { createReducer, on } from '@ngrx/store';
-import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { combineReducers, createReducer, on } from '@ngrx/store';
+import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import { Post } from '@posts/models/post';
-import { PostsState } from '@core/store/state/posts/posts.state';
+import { ThreadPostsState } from '@core/store/state/posts/posts.state';
 import * as postsActions from '@core/store/actions/posts/posts.actions';
-import { updateFetchDateForKey } from '@core/store/helper-functions';
+import { DEFAULT_PAGE_SIZE } from '@assets/supabase-constants';
 
 export const adapter: EntityAdapter<Post> = createEntityAdapter<Post>({
-  sortComparer: false,
+  sortComparer: (a, b) => a.id - b.id,
 });
 
-export const initialState: PostsState = adapter.getInitialState({
-  lastFetchedAt: new Map<number, Date>(),
-  isLoading: false,
-  chosenThread: -1,
-});
+export const initialThreadPostsState: ThreadPostsState = {
+  posts: adapter.getInitialState(),
 
-const postsToRemove = (threadID: number) => (post: Post) => {
-  return post.thread_id === threadID;
+  postIDs: null,
+
+  expiryDate: null,
+
+  pagination: {
+    pageSize: DEFAULT_PAGE_SIZE,
+
+    totalEntries: 1,
+
+    currentPage: 1,
+  },
 };
 
-export const postsReducer = createReducer(
-  initialState,
-  on(postsActions.fetchPostsForThread, (state, { threadID }) => {
-    return {
-      ...state,
-      isLoading: true,
-      chosenThread: threadID,
-    };
-  }),
-  on(postsActions.upsertPosts, (state, { posts }) => {
-    const updatedDates = updateFetchDateForKey(
-      state.lastFetchedAt,
-      state.chosenThread
-    );
+const isLoadingReducer = createReducer(
+  false,
+  on(
+    postsActions.requestPostIDsForThread,
+    postsActions.requestPostsForIDs,
+    () => true
+  ),
+  on(
+    postsActions.receivePostIDsForThread,
+    postsActions.receivePostsForIDs,
+    () => false
+  )
+);
 
-    return adapter.upsertMany(posts, {
-      ...state,
-      lastFetchedAt: updatedDates,
-      isLoading: false,
-      chosenThread: -1,
-    });
+const chosenThreadReducer = createReducer(
+  -1,
+  on(postsActions.chooseThread, (_, { threadID }) => threadID)
+);
+
+const threadPostsByIDReducer = createReducer(
+  {} as Record<number, ThreadPostsState>,
+  on(
+    postsActions.receivePostIDsForThread,
+    (state, { postIDs, postCount, threadID }) => {
+      const newState = { ...state };
+
+      if (!newState[threadID]) {
+        newState[threadID] = { ...initialThreadPostsState };
+      }
+
+      newState[threadID] = {
+        ...newState[threadID],
+        postIDs: postIDs,
+        pagination: {
+          ...newState[threadID].pagination,
+          totalEntries: postCount,
+        },
+      };
+
+      return newState;
+    }
+  ),
+  on(postsActions.receivePostsForIDs, (state, { posts, threadID }) => {
+    const newState = { ...state };
+
+    if (!newState[threadID]) {
+      newState[threadID] = { ...initialThreadPostsState };
+    }
+
+    newState[threadID] = {
+      ...newState[threadID],
+      posts: adapter.upsertMany(posts, newState[threadID].posts),
+    };
+
+    return newState;
   }),
-  on(postsActions.clearPostsForThread, (state, { threadID }) => {
-    return adapter.removeMany(postsToRemove(threadID), state);
+  on(postsActions.changeCurrentPage, (state, { pageNumber, threadID }) => {
+    const newState = { ...state };
+
+    if (!newState[threadID]) {
+      newState[threadID] = { ...initialThreadPostsState };
+    }
+
+    newState[threadID] = {
+      ...newState[threadID],
+      pagination: {
+        ...newState[threadID].pagination,
+        currentPage: pageNumber,
+      },
+    };
+
+    return newState;
   })
 );
+
+// Create even more granular reducers for the nested properties
+// and combine them using combineReducers()
+export const postsReducer = combineReducers({
+  isLoading: isLoadingReducer,
+  chosenThread: chosenThreadReducer,
+  threadPosts: threadPostsByIDReducer,
+});
