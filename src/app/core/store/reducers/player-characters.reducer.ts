@@ -1,17 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
-import { saveCharacters } from '@core/store/actions/player-characters.actions';
-import Dictionary from '@shared/dictionary';
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { PlayerCharacter } from '@creator/models/player-character.model';
 import { PlayerCharactersState } from '@core/store/state/player-characters.state';
+import * as playerCharactersActions from '../actions/player-characters.actions';
 
-export const initialState: PlayerCharactersState = {
-  playerCharacters: new Dictionary<PlayerCharacter>(),
-  currentPlayerCharacter: undefined,
-};
+export const adapter: EntityAdapter<PlayerCharacter> =
+  createEntityAdapter<PlayerCharacter>({
+    sortComparer: false,
+  });
 
-export const playerCharactersReducer = createReducer(
-  initialState,
-  on(saveCharacters, (state, { playerCharacters }) => ({
-    playerCharacters: saveCharacters._p.playerCharacters,
-  }))
-);
+export const initialState: PlayerCharactersState = adapter.getInitialState({
+  currentUserCharacterID: null,
+  chosenCharacterID: null,
+});
+
+export const playerCharactersReducer = createReducer(initialState);

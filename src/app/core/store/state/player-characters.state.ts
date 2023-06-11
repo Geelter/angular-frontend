@@ -1,7 +1,8 @@
-import Dictionary from '@shared/dictionary';
 import { PlayerCharacter } from '@creator/models/player-character.model';
+import { EntityState } from '@ngrx/entity';
 
-export interface PlayerCharactersState {
-  playerCharacters: Dictionary<PlayerCharacter>;
-  currentPlayerCharacter: undefined | null | PlayerCharacter;
+export interface PlayerCharactersState extends EntityState<PlayerCharacter> {
+  currentUserCharacterID: number | null;
+
+  chosenCharacterID: number | null;
 }
