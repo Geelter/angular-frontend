@@ -12,6 +12,9 @@ import { ImageModule } from 'primeng/image';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RippleModule } from 'primeng/ripple';
@@ -19,6 +22,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { StepsModule } from 'primeng/steps';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [],
@@ -35,6 +39,9 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
     InputNumberModule,
     InputTextModule,
     MenubarModule,
+    MessageModule,
+    MessagesModule,
+    PaginatorModule,
     PanelModule,
     ProgressSpinnerModule,
     RippleModule,
@@ -42,6 +49,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
     StepsModule,
     StyleClassModule,
     TieredMenuModule,
+    ToastModule,
   ],
   exports: [
     AvatarModule,
@@ -55,6 +63,9 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
     InputNumberModule,
     InputTextModule,
     MenubarModule,
+    MessageModule,
+    MessagesModule,
+    PaginatorModule,
     PanelModule,
     ProgressSpinnerModule,
     RippleModule,
@@ -62,6 +73,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
     StepsModule,
     StyleClassModule,
     TieredMenuModule,
+    ToastModule,
   ],
 })
 export class SharedModule {}

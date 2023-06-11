@@ -1,11 +1,5 @@
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
-import { SupabaseAuthService } from '@core/services/supabase-auth.service';
+import { CanActivate, Router, UrlTree } from '@angular/router';
+import { SupabaseAuthService } from '@core/services/supabase/supabase-auth.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -17,11 +11,8 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) {}
 
-  async canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Promise<boolean | UrlTree> {
-    return new Promise((resolve, reject) => {
+  async canActivate(): Promise<boolean | UrlTree> {
+    return new Promise(resolve => {
       this.supabaseAuth
         .getSession()
         .then(data => {
@@ -32,7 +23,7 @@ export class AuthGuard implements CanActivate {
             resolve(false);
           }
         })
-        .catch(error => {
+        .catch(() => {
           const _ = this.router.navigate(['/auth', 'login']);
           resolve(false);
         });

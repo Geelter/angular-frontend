@@ -10,11 +10,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from '@core/store/reducers/app.reducer';
+import * as postCategoriesEffects from '@core/store/effects/posts/post-categories.effects';
+import * as postThreadsEffects from '@core/store/effects/posts/post-threads.effects';
+import * as postsEffects from '@core/store/effects/posts/posts.effects';
 
 import { BannerComponent } from './header/banner/banner.component';
 import { HeaderComponent } from './header/header.component';
 import { MenubarComponent } from './header/menubar/menubar.component';
 import { HomeComponent } from './home/home.component';
+
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -23,6 +29,7 @@ import { HomeComponent } from './home/home.component';
     MenubarComponent,
     HomeComponent,
   ],
+  providers: [MessageService],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -31,6 +38,13 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot(
+      postCategoriesEffects,
+      postThreadsEffects,
+      postsEffects
+    ),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    ToastModule,
   ],
   exports: [
     AppRoutingModule,
@@ -38,6 +52,7 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     HeaderComponent,
     HttpClientModule,
+    ToastModule,
   ],
 })
 export class CoreModule {}
