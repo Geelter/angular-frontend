@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="p-4 w-full">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-4">
   <div class="text-center mb-5">
     <img src="assets/primeng.svg" alt="Image" height="50" class="mb-3" />
     <div class="text-3xl font-medium mb-3">Welcome Back</div>
@@ -11,67 +11,53 @@
   </div>
 
   <div>
-    <div class="form-group">
-      <label for="email" class="block font-medium mb-2">Email</label>
-      <div class="flex gap-3">
-        <input
-          id="email"
-          type="email"
-          placeholder="Email address"
-          pInputText
-          class="w-full mb-3"
-          ngModel
-          #emailField="ngModel"
-          name="email"
-          required
-          email />
-        <p-message
-          *ngIf="!emailField.valid && emailField.touched"
-          severity="error"></p-message>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="password" class="block font-medium mb-2">Password</label>
-      <div class="flex gap-3">
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          pInputText
-          class="w-full mb-3"
-          ngModel
-          #passwordField="ngModel"
-          name="password"
-          required />
-        <p-message
-          *ngIf="!passwordField.valid && passwordField.touched"
-          severity="error"></p-message>
-      </div>
-    </div>
-    <div
-      class="form-group flex align-items-center justify-content-between mb-6">
-      <div class="flex align-items-center">
-        <p-checkbox
-          id="rememberme"
-          [binary]="true"
-          styleClass="mr-2"></p-checkbox>
-        <label for="rememberme">Remember me</label>
-      </div>
-      <a
-        [routerLink]="['/auth']"
-        class="font-medium no-underline ml-2 text-right cursor-pointer"
-        >Forgot password?</a
-      >
-    </div>
-
-    <button
-      type="submit"
-      pButton
-      pRipple
-      [label]="isSubmitting ? 'Sending Request' : 'Sign In'"
-      icon="pi pi-user"
-      class="w-full p-button-outlined"
-      [disabled]="!loginForm.valid || isSubmitting"></button>
+    <span class="p-float-label mb-4">
+      <input
+        id="email"
+        type="email"
+        pInputText
+        class="w-full"
+        formControlName="email" />
+      <label for="email">Email</label>
+    </span>
   </div>
+
+  <div>
+    <span class="p-float-label mb-4">
+      <p-password
+        id="password"
+        [showClear]="true"
+        [toggleMask]="true"
+        [feedback]="false"
+        formControlName="password"
+        styleClass="w-full p-password p-component p-inputwrapper p-input-icon-right"
+        inputStyleClass="w-full"></p-password>
+      <label for="password">Password</label>
+    </span>
+  </div>
+
+  <div class="flex align-items-center justify-content-between mb-6">
+    <div class="flex align-items-center">
+      <p-checkbox
+        id="remember-me"
+        [binary]="true"
+        styleClass="mr-2"
+        formControlName="rememberMe"></p-checkbox>
+      <label for="remember-me">Remember me</label>
+    </div>
+    <a
+      [routerLink]="['/auth']"
+      class="font-medium no-underline ml-2 text-right cursor-pointer"
+      >Forgot password?</a
+    >
+  </div>
+
+  <button
+    type="submit"
+    pButton
+    pRipple
+    [label]="isSubmitting ? 'Sending Request' : 'Sign In'"
+    icon="pi pi-user"
+    class="w-full p-button-outlined"
+    [disabled]="!loginForm.valid || isSubmitting"></button>
 </form>
