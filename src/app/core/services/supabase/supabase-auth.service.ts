@@ -24,8 +24,17 @@ export class SupabaseAuthService {
     return data;
   }
 
-  async register(email: string, password: string) {
-    const { data, error } = await this.clientAuth.signUp({ email, password });
+  async register(username: string, email: string, password: string) {
+    const { data, error } = await this.clientAuth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          username: username,
+        },
+      },
+    });
+
     if (error) {
       this.messageService.showError('Registration failed', error.message);
       return;
