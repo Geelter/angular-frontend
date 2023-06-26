@@ -6,37 +6,51 @@
   <ng-template #content>
     <div class="page-content">
       <ng-container *ngIf="postsForCurrentPage$ | async as resolvedPosts">
-        <ng-container *ngIf="playerCharacters | async as resolvedCharacters">
-          <ng-container
-            *ngTemplateOutlet="
-              resolvedPosts.length ? posts : editor
-            "></ng-container>
+        <ng-container
+          *ngTemplateOutlet="
+            resolvedPosts.length ? posts : editor
+          "></ng-container>
 
-          <ng-template #posts>
-            <p-panel *ngFor="let post of resolvedPosts">
-              <ng-template pTemplate="header">
-                {{ resolvedCharacters.getItem(post.author_id.toString()).name }}
+        <ng-template #posts>
+          <p-panel *ngFor="let post of resolvedPosts">
+            <ng-template pTemplate="header">
+              <ng-container
+                *ngIf="
+                  getProfile$(post.author_id) | async as profile;
+                  else loadingProfile
+                ">
+                {{ profile.username }}
+              </ng-container>
+              <ng-template #loadingProfile>
+                <p-skeleton
+                  width="5rem"
+                  height="1.1rem"
+                  borderRadius="16px"></p-skeleton>
               </ng-template>
-              <div class="container">
-                <p-image
-                  class="float-image"
-                  src="assets/images/default-avatar.jpg"
-                  alt="avatar"></p-image>
-                <p>{{ post.content }}</p>
-              </div>
-            </p-panel>
-            <app-post-editor
-              cardHeader="Continue this story"
-              cardContent="Don't let the others get ahead."></app-post-editor>
-          </ng-template>
+            </ng-template>
+            <div class="container">
+              <p-image
+                class="float-image"
+                width="100px"
+                [src]="
+                  (getProfile$(post.author_id) | async)?.avatar_url ??
+                  'assets/images/default-avatar.jpg'
+                "
+                alt="avatar"></p-image>
+              <p>{{ post.content }}</p>
+            </div>
+          </p-panel>
+          <app-post-editor
+            cardHeader="Continue this story"
+            cardContent="Don't let the others get ahead."></app-post-editor>
+        </ng-template>
 
-          <ng-template #editor>
-            <app-post-editor
-              class="no-posts-grid"
-              cardHeader="Nothing out here but the wind"
-              cardContent="Seems like you're a trailblazer. Want to leave a mark?"></app-post-editor>
-          </ng-template>
-        </ng-container>
+        <ng-template #editor>
+          <app-post-editor
+            class="no-posts-grid"
+            cardHeader="Nothing out here but the wind"
+            cardContent="Seems like you're a trailblazer. Want to leave a mark?"></app-post-editor>
+        </ng-template>
       </ng-container>
     </div>
 

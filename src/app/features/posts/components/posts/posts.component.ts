@@ -1,19 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { SupabaseCharactersService } from '@core/services/supabase/supabase-characters.service';
-import { Post } from '../../models/post';
-import Dictionary from '@shared/dictionary';
-import { PlayerCharacter } from '@creator/models/player-character.model';
+import { Post } from '../../models/post.model';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import {
   selectPaginationStateForChosenThread,
   selectPostsIsLoading,
   selectPostsWithIDsForCurrentPage,
 } from '@core/store/selectors/posts/posts.selectors';
+import { selectProfileForID } from '@core/store/selectors/profiles.selectors';
 import { changeCurrentPage } from '@core/store/actions/posts/posts.actions';
 import { EntityPaginationState } from '@core/store/state/pagination.state';
 import { PostsManagerService } from '@posts/services/posts-manager.service';
+import { UserProfilesManagerService } from '@core/services/user-profiles-manager.service';
+import { Profile } from '@core/models/profile.model';
 
 @Component({
   selector: 'app-posts',
@@ -25,7 +25,7 @@ export class PostsComponent implements OnInit, OnDestroy {
     private store: Store,
     private route: ActivatedRoute,
     private postsManagerService: PostsManagerService,
-    private charactersService: SupabaseCharactersService
+    private profilesManagerService: UserProfilesManagerService
   ) {}
 
   threadID: number;
@@ -36,7 +36,9 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   postsPaginationState$: Observable<EntityPaginationState>;
 
-  playerCharacters: Promise<Dictionary<PlayerCharacter>>;
+  getProfile$(profileID: string): Observable<Profile | undefined> {
+    return this.store.select(selectProfileForID({ profileID: profileID }));
+  }
 
   getPaginatorFirst(paginationState: EntityPaginationState): number {
     return (paginationState.currentPage - 1) * paginationState.pageSize;
@@ -57,17 +59,29 @@ export class PostsComponent implements OnInit, OnDestroy {
     this.postsManagerService.initialize(this.threadID);
 
     this.postsAreLoading$ = this.store.select(selectPostsIsLoading);
-    this.postsForCurrentPage$ = this.store.select(
-      selectPostsWithIDsForCurrentPage
-    );
+
+    this.postsForCurrentPage$ = this.store
+      .select(selectPostsWithIDsForCurrentPage)
+      .pipe(
+        tap(posts => {
+          if (posts) {
+            const associatedProfileIDs = new Set(
+              posts.map(post => post.author_id)
+            );
+            this.profilesManagerService.initialize(
+              Array.from(associatedProfileIDs)
+            );
+          }
+        })
+      );
+
     this.postsPaginationState$ = this.store.select(
       selectPaginationStateForChosenThread
     );
-
-    this.playerCharacters = this.charactersService.getPlayerCharacters();
   }
 
   ngOnDestroy() {
     this.postsManagerService.cleanUp();
+    this.profilesManagerService.cleanUp();
   }
 }
