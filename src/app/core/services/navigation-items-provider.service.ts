@@ -16,7 +16,9 @@ export class NavigationItemsProviderService {
     {
       label: 'Home',
       icon: 'pi pi-fw pi-home',
-      routerLink: ['/'],
+      command: () => {
+        this.navigationService.navigateToRoot();
+      },
     },
     {
       label: 'Characters',
@@ -36,7 +38,9 @@ export class NavigationItemsProviderService {
     {
       label: 'Posts',
       icon: 'pi pi-fw pi-book',
-      routerLink: ['/posts', 'categories'],
+      command: () => {
+        this.navigationService.navigateToPostCategories();
+      },
     },
     {
       label: 'Logout',

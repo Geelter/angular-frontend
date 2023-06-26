@@ -4,8 +4,9 @@
     <div class="text-3xl font-medium mb-3">Welcome Back</div>
     <span class="font-medium line-height-3">Don't have an account?</span>
     <a
-      [routerLink]="['/auth', 'register']"
+      routerLink="#"
       class="font-medium no-underline ml-2 cursor-pointer"
+      (click)="navigationService.navigateToRegister()"
       >Create today!</a
     >
   </div>

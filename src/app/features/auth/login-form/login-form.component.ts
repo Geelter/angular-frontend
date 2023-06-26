@@ -12,7 +12,7 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private supabaseAuth: SupabaseAuthService,
-    private navigationService: NavigationService
+    public navigationService: NavigationService
   ) {}
 
   loginForm: FormGroup;
