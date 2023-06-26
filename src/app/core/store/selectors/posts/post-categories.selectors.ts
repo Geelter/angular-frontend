@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { PostCategoriesState } from '@core/store/state/posts/post-categories.state';
 import { adapter } from '@core/store/reducers/posts/post-categories.reducer';
 import { EntityPaginationState } from '@core/store/state/pagination.state';
-import { Category } from '@posts/models/category';
+import { Category } from '@posts/models/category.model';
 
 const featureKey = 'postCategories';
 

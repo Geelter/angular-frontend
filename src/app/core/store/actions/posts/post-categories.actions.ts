@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Category } from '@posts/models/category';
+import { Category } from '@posts/models/category.model';
 
 export const requestCategoryIDs = createAction(
   '[Post Categories] Request Category IDs'

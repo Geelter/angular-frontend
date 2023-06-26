@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SupabaseService } from '@core/services/supabase/supabase.service';
-import { Category } from '@posts/models/category';
+import { Category } from '@posts/models/category.model';
 import { MsgService } from '@core/services/msg.service';
 import * as supabaseConstants from '@assets/supabase-constants';
 

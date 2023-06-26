@@ -1,6 +1,6 @@
 import { combineReducers, createReducer, on } from '@ngrx/store';
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Category } from '@posts/models/category';
+import { Category } from '@posts/models/category.model';
 import * as postCategoriesActions from '@core/store/actions/posts/post-categories.actions';
 import { DEFAULT_PAGE_SIZE } from '@assets/supabase-constants';
 
@@ -39,24 +39,16 @@ const paginationReducer = createReducer(
     currentPage: 1,
   },
   on(postCategoriesActions.changeCurrentPage, (state, { pageNumber }) => {
-    let newState = { ...state };
-
-    newState = {
-      ...newState,
+    return {
+      ...state,
       currentPage: pageNumber,
     };
-
-    return newState;
   }),
   on(postCategoriesActions.receiveCategoryIDs, (state, { categoryCount }) => {
-    let newState = { ...state };
-
-    newState = {
-      ...newState,
+    return {
+      ...state,
       totalEntries: categoryCount,
     };
-
-    return newState;
   })
 );
 
