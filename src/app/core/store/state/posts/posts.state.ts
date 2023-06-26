@@ -1,4 +1,4 @@
-import { Post } from '@posts/models/post';
+import { Post } from '@posts/models/post.model';
 import { EntityState } from '@ngrx/entity';
 import { EntityPaginationState } from '@core/store/state/pagination.state';
 

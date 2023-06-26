@@ -7,7 +7,7 @@ import {
   adapter,
   initialCategoryThreadsState,
 } from '@core/store/reducers/posts/post-threads.reducer';
-import { Thread } from '@posts/models/thread';
+import { Thread } from '@posts/models/thread.model';
 
 export const featureKey = 'postThreads';
 

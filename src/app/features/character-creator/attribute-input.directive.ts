@@ -1,6 +1,6 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import { InputNumber } from 'primeng/inputnumber';
-import { AttributesConfigModel } from '@creator/models/attributes-config.model';
+import { AttributesConfig } from '@creator/models/attributes-config.model';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
@@ -9,7 +9,7 @@ import { AttributesConfigModel } from '@creator/models/attributes-config.model';
 export class AttributeInputDirective implements OnInit {
   constructor(private input: InputNumber) {}
 
-  @Input() attributesConfig: AttributesConfigModel;
+  @Input() attributesConfig: AttributesConfig;
 
   ngOnInit() {
     this.input.showButtons = true;

@@ -1,6 +1,6 @@
 import { combineReducers, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
-import { Post } from '@posts/models/post';
+import { Post } from '@posts/models/post.model';
 import { ThreadPostsState } from '@core/store/state/posts/posts.state';
 import * as postsActions from '@core/store/actions/posts/posts.actions';
 import { DEFAULT_PAGE_SIZE } from '@assets/supabase-constants';

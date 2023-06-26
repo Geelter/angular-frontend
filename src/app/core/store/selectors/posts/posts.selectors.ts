@@ -7,7 +7,7 @@ import {
   adapter,
   initialThreadPostsState,
 } from '@core/store/reducers/posts/posts.reducer';
-import { Post } from '@posts/models/post';
+import { Post } from '@posts/models/post.model';
 
 export const featureKey = 'posts';
 

@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Category } from '../../models/category';
+import { Category } from '../../models/category.model';
 import { Store } from '@ngrx/store';
 import {
   selectCategoriesPaginationState,

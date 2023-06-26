@@ -1,6 +1,6 @@
-import { Category } from '@posts/models/category';
-import { Thread } from '@posts/models/thread';
-import { Post } from '@posts/models/post';
+import { Category } from '@posts/models/category.model';
+import { Thread } from '@posts/models/thread.model';
+import { Post } from '@posts/models/post.model';
 
 interface PostsDataProvider {
   fetchCategories(): Promise<Category[]>;

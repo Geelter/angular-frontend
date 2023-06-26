@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Post } from '@posts/models/post';
+import { Post } from '@posts/models/post.model';
 
 export const chooseThread = createAction(
   '[Posts] Choose Thread',
