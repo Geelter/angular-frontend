@@ -14,8 +14,8 @@
         <p>{{ thread.description }}</p>
         <ng-template pTemplate="footer">
           <p-button
-            [routerLink]="['/', 'posts', thread.id]"
             styleClass="p-button-outlined"
+            (onClick)="navigationService.navigateToThreadPosts(thread.id)"
             >Dive in</p-button
           >
         </ng-template>

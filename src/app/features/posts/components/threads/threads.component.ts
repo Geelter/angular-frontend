@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Thread } from '../../models/thread';
+import { Thread } from '../../models/thread.model';
 import { NavigationService } from '@core/services/navigation.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -22,7 +22,7 @@ export class ThreadsComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private route: ActivatedRoute,
-    private navigationService: NavigationService,
+    public navigationService: NavigationService,
     private thradsManagerService: PostThreadsManagerService
   ) {}
 
@@ -48,6 +48,7 @@ export class ThreadsComponent implements OnInit, OnDestroy {
       })
     );
   }
+
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.categoryID = +params.get('category_id')!;
