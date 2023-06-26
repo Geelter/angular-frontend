@@ -11,6 +11,19 @@ export class SupabaseAuthService {
     return this.supabase.client.auth;
   }
 
+  async getDefaultAvatar() {
+    const { data, error } = await this.supabase.client.storage
+      .from('avatars')
+      .download('default-avatar.jpg');
+
+    if (error) {
+      this.messageService.showError('Failed avatar download', error.message);
+      return;
+    } else {
+      return URL.createObjectURL(data);
+    }
+  }
+
   async login(email: string, password: string) {
     const { data, error } = await this.clientAuth.signInWithPassword({
       email,
@@ -36,7 +49,11 @@ export class SupabaseAuthService {
     });
 
     if (error) {
-      this.messageService.showError('Registration failed', error.message);
+      const status = error.status ?? 0;
+      this.messageService.showError(
+        'Registration failed',
+        status == 500 ? 'Username already taken' : error.message
+      );
       return;
     }
     this.messageService.showSuccess('Registration successful');
@@ -69,9 +86,6 @@ export class SupabaseAuthService {
 
     return session?.user.id;
   }
-
-  // Implement this to fetch the associated character on signup/signin
-  // async getAssociatedPlayerCharacter(userID: string | undefined) {}
 
   constructor(
     private supabase: SupabaseService,
