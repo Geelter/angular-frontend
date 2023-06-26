@@ -20,6 +20,7 @@ export class MsgService {
       severity: 'error',
       summary: summary,
       detail: detail,
+      sticky: true,
     });
   }
 
