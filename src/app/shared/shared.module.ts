@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
@@ -16,9 +16,11 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
+import { PasswordModule } from 'primeng/password';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RippleModule } from 'primeng/ripple';
 import { SidebarModule } from 'primeng/sidebar';
+import { SkeletonModule } from 'primeng/skeleton';
 import { StepsModule } from 'primeng/steps';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TieredMenuModule } from 'primeng/tieredmenu';
@@ -43,9 +45,12 @@ import { ToastModule } from 'primeng/toast';
     MessagesModule,
     PaginatorModule,
     PanelModule,
+    PasswordModule,
     ProgressSpinnerModule,
+    ReactiveFormsModule,
     RippleModule,
     SidebarModule,
+    SkeletonModule,
     StepsModule,
     StyleClassModule,
     TieredMenuModule,
@@ -67,9 +72,12 @@ import { ToastModule } from 'primeng/toast';
     MessagesModule,
     PaginatorModule,
     PanelModule,
+    PasswordModule,
     ProgressSpinnerModule,
+    ReactiveFormsModule,
     RippleModule,
     SidebarModule,
+    SkeletonModule,
     StepsModule,
     StyleClassModule,
     TieredMenuModule,

@@ -13,6 +13,8 @@ import { appReducer } from '@core/store/reducers/app.reducer';
 import * as postCategoriesEffects from '@core/store/effects/posts/post-categories.effects';
 import * as postThreadsEffects from '@core/store/effects/posts/post-threads.effects';
 import * as postsEffects from '@core/store/effects/posts/posts.effects';
+import * as profilesEffects from '@core/store/effects/profiles.effects';
+import * as archetypesEffects from '@core/store/effects/archetypes.effects';
 
 import { BannerComponent } from './header/banner/banner.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ProfilesModule } from '../features/profiles/profiles.module';
 
 @NgModule({
   declarations: [
@@ -41,10 +44,13 @@ import { ToastModule } from 'primeng/toast';
     EffectsModule.forRoot(
       postCategoriesEffects,
       postThreadsEffects,
-      postsEffects
+      postsEffects,
+      profilesEffects,
+      archetypesEffects
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ToastModule,
+    ProfilesModule,
   ],
   exports: [
     AppRoutingModule,
