@@ -1,0 +1,31 @@
+<div class="p-card flex-column w-2">
+  <div class="flex-column m-3">
+    <h2 class="flex align-items-center justify-content-center">
+      {{ profile.username }}
+    </h2>
+
+    <h3
+      *ngIf="archetype$ | async as resolvedArchetype; else placeholder"
+      class="flex align-items-center justify-content-center">
+      {{ resolvedArchetype.name }}
+    </h3>
+    <ng-template #placeholder>
+      <p-skeleton
+        class="flex align-items-center justify-content-center"
+        height="1.4rem"
+        width="7rem"
+        borderRadius="16px"></p-skeleton>
+    </ng-template>
+  </div>
+
+  <p-divider></p-divider>
+
+  <p class="flex justify-content-center m-3">
+    {{
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem esse illo neque, odio quod reiciendis tenetur. Atque cumque dicta id minima neque numquam praesentium voluptates voluptatum? Beatae fugit non voluptatum.'
+        | slice : 0 : 100
+    }}...
+  </p>
+
+  <p-button class="flex justify-content-center mb-3">Open profile</p-button>
+</div>
