@@ -43,14 +43,14 @@ export class CreatorContainerComponent implements OnInit {
   ngOnInit() {
     this.steps = tempSteps;
 
-    this.creatorService.getCharacterArchetypes().finally(() => {
-      this.characterArchetypesFetched = true;
-    });
-    this.creatorService.getAttributesConfig().finally(() => {
-      this.attributesConfigFetched = true;
-    });
-    this.creatorService.getAttributes().finally(() => {
-      this.characterAttributesFetched = true;
-    });
+    // this.creatorService.getCharacterArchetypes().finally(() => {
+    //   this.characterArchetypesFetched = true;
+    // });
+    // this.creatorService.getAttributesConfig().finally(() => {
+    //   this.attributesConfigFetched = true;
+    // });
+    // this.creatorService.getAttributes().finally(() => {
+    //   this.characterAttributesFetched = true;
+    // });
   }
 }

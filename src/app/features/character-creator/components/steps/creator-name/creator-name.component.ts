@@ -12,8 +12,8 @@ export class CreatorNameComponent implements OnInit {
     private router: Router,
     private creatorService: CharacterCreatorService
   ) {
-    [this.previousStepRoute, this.exitRoute] =
-      this.creatorService.getRoutesForStep(this.stepNumber);
+    // [this.previousStepRoute, this.exitRoute] =
+    //   this.creatorService.getRoutesForStep(this.stepNumber);
   }
 
   private stepNumber = 3;
@@ -24,23 +24,23 @@ export class CreatorNameComponent implements OnInit {
 
   characterName: string;
 
-  previousStep() {
-    this.router.navigate(this.previousStepRoute);
-  }
-
-  async submitCharacter() {
-    const result = await this.creatorService.submitCharacter();
-
-    if (result) {
-      this.router.navigate(this.exitRoute);
-    } else {
-      console.log('');
-    }
-  }
-
-  saveNameToService(name: string) {
-    this.creatorService.characterName = name;
-  }
+  // previousStep() {
+  //   this.router.navigate(this.previousStepRoute);
+  // }
+  //
+  // async submitCharacter() {
+  //   const result = await this.creatorService.submitCharacter();
+  //
+  //   if (result) {
+  //     this.router.navigate(this.exitRoute);
+  //   } else {
+  //     console.log('');
+  //   }
+  // }
+  //
+  // saveNameToService(name: string) {
+  //   this.creatorService.characterName = name;
+  // }
 
   ngOnInit() {
     this.characterName = this.creatorService.characterName;

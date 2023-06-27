@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { SupabaseService } from '@core/services/supabase/supabase.service';
 import { RealtimeChannel } from '@supabase/supabase-js';
 
@@ -6,42 +7,20 @@ import { RealtimeChannel } from '@supabase/supabase-js';
   providedIn: 'root',
 })
 export class SupabaseRealtimeService {
-  broadcastChannel: RealtimeChannel;
+  constructor(private supabase: SupabaseService) {}
 
-  private broadcastInterval: NodeJS.Timer;
-
-  clearBroadcastInterval() {
-    // clearInterval(this.broadcastInterval);
-  }
-
-  constructor(private supabase: SupabaseService) {
-    // this.broadcastChannel = this.supabase.client.channel('room1', {
-    //   config: {
-    //     broadcast: {
-    //       self: true,
-    //     },
-    //   },
-    // });
-    //
-    // this.broadcastChannel
-    //   .on('broadcast', { event: 'cursor-pos' }, payload => {
-    //     console.log('Listen log');
-    //     console.log(payload);
-    //   })
-    //   .subscribe(status => {
-    //     const subDate = Date.now();
-    //     if (status === 'SUBSCRIBED') {
-    //       // now you can start broadcasting cursor positions
-    //       this.broadcastInterval = setInterval(() => {
-    //         this.broadcastChannel.send({
-    //           type: 'broadcast',
-    //           event: 'cursor-pos',
-    //           payload: { x: Math.random(), y: Math.random() },
-    //         });
-    //         console.log('Broadcast status from: ' + subDate);
-    //         console.log(status);
-    //       }, 2000);
-    //     }
-    //   });
-  }
+  // subscribeToPosts() {
+  //   this.supabase.client
+  //     .from('posts')
+  //     .on('INSERT', payload => {
+  //       this.store.dispatch(new AddPost(payload.new));
+  //     })
+  //     .on('UPDATE', payload => {
+  //       this.store.dispatch(new UpdatePost(payload.new));
+  //     })
+  //     .on('DELETE', payload => {
+  //       this.store.dispatch(new DeletePost(payload.old));
+  //     })
+  //     .subscribe();
+  // }
 }

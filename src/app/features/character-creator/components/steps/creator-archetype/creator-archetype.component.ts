@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CharacterCreatorService } from '@creator/character-creator.service';
-import { ArchetypeModel } from '@creator/models/archetype.model';
+import { Archetype } from '@creator/models/archetype.model';
 
 @Component({
   selector: 'app-creator-archetype',
@@ -13,9 +13,9 @@ export class CreatorArchetypeComponent implements OnInit {
     private router: Router,
     public creatorService: CharacterCreatorService
   ) {
-    [this.exitRoute, this.nextStepRoute] = this.creatorService.getRoutesForStep(
-      this.stepNumber
-    );
+    // [this.exitRoute, this.nextStepRoute] = this.creatorService.getRoutesForStep(
+    //   this.stepNumber
+    // );
   }
 
   private stepNumber = 1;
@@ -24,9 +24,9 @@ export class CreatorArchetypeComponent implements OnInit {
 
   private nextStepRoute: string[];
 
-  characterArchetypesArray: Promise<ArchetypeModel[]>;
+  characterArchetypesArray: Promise<Archetype[]>;
 
-  chosenArchetype: ArchetypeModel | null = null;
+  chosenArchetype: Archetype | null = null;
 
   nextStep() {
     this.router.navigate(this.nextStepRoute);
@@ -36,17 +36,17 @@ export class CreatorArchetypeComponent implements OnInit {
     this.router.navigate(this.exitRoute);
   }
 
-  chooseArchetype(archetype: ArchetypeModel) {
+  chooseArchetype(archetype: Archetype) {
     this.creatorService.chosenArchetypeID = archetype.id;
     this.chosenArchetype = archetype;
   }
 
   ngOnInit() {
-    this.characterArchetypesArray = this.creatorService
-      .getCharacterArchetypes()
-      .then(archetypes => {
-        return archetypes.values();
-      });
-    this.chosenArchetype = this.creatorService.chosenArchetype;
+    // this.characterArchetypesArray = this.creatorService
+    //   .getCharacterArchetypes()
+    //   .then(archetypes => {
+    //     return archetypes.values();
+    //   });
+    // this.chosenArchetype = this.creatorService.chosenArchetype;
   }
 }
