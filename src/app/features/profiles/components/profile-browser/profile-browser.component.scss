@@ -1,0 +1,11 @@
+.profiles-grid {
+  column-count: var(--column-count);
+  column-gap: 1em;
+}
+
+.profile-card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+}

@@ -1,0 +1,23 @@
+<div class="page-wrapper">
+  <p-progressSpinner
+    class="progress-spinner"
+    *ngIf="profilesAreLoading$ | async; else content"></p-progressSpinner>
+
+  <ng-template #content>
+    <div class="page-content">
+      <ng-container *ngIf="profilesForCurrentPage$ | async as resolvedProfiles">
+        <app-profile-display-card
+          *ngFor="let profile of resolvedProfiles"
+          [profile]="profile"></app-profile-display-card>
+      </ng-container>
+    </div>
+
+    <p-paginator
+      *ngIf="profilesPaginationsState$ | async as resolvedPaginationState"
+      [totalRecords]="resolvedPaginationState.totalEntries"
+      [rows]="resolvedPaginationState.pageSize"
+      [first]="getPaginatorFirst(resolvedPaginationState)"
+      (onPageChange)="onPageChange($event)">
+    </p-paginator>
+  </ng-template>
+</div>
